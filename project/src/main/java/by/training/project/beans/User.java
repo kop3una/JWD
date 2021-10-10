@@ -1,10 +1,10 @@
 package by.training.project.beans;
 
-import by.training.project.service.hashing.MD5Hashing;
+import by.training.project.service.hashing.SHA256Hashing;
 
 import java.util.Objects;
 
-public class User extends Entity{ // todo equals hashcode toString
+public class User extends Entity{
     private String email;
     private String password;
     private Role role;
@@ -24,7 +24,7 @@ public class User extends Entity{ // todo equals hashcode toString
     }
 
     public void setPassword(String password) {
-        this.password = MD5Hashing.hashing(password);
+        this.password = SHA256Hashing.hashing(password);
     }
 
     public Role getRole() {

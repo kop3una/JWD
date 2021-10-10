@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'ru'}"/>
+<fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : initParam['defaultLocale']}"/>
 <fmt:setBundle basename="resources"/>
 <html>
 <head>
-    <%@ include file="components/head-tags.jsp" %>
+    <jsp:include page="components/head-tags.jsp"/>
     <title><fmt:message key="error.name-of-Web-Site"/></title>
 </head>
 <body>
@@ -18,5 +18,8 @@
         </a>
     </div>
 </div>
+
+<jsp:include page="components/footer.jsp"/>
+
 </body>
 </html>

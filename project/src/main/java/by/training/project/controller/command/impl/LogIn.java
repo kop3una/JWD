@@ -7,7 +7,7 @@ import by.training.project.controller.command.rout.RoutingType;
 import by.training.project.service.ServiceFactory;
 import by.training.project.service.UserService;
 import by.training.project.service.exception.ServiceException;
-import by.training.project.service.hashing.MD5Hashing;
+import by.training.project.service.hashing.SHA256Hashing;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +26,7 @@ public class LogIn implements Command { // TODO do log in in page
             return new Rout(PagePath.ERROR_PAGE_REDIRECT, RoutingType.REDIRECT);
         }
 
-        password = Optional.of(MD5Hashing.hashing(RequestParameter.PASSWORD));
+        password = Optional.of(SHA256Hashing.hashing(RequestParameter.PASSWORD));
 
         UserService userService = ServiceFactory.getInstance().getUserService();
         User user;

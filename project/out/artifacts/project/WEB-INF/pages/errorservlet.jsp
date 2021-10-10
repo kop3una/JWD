@@ -7,16 +7,12 @@
     <jsp:include page="components/head-tags.jsp"/>
     <title><fmt:message key="error.name-of-Web-Site"/></title>
 </head>
+
 <body>
 <div class="container">
     <h1 class="text-center">
-        <fmt:message key="${sessionScope.error}"/>
+        <fmt:message key="error.servlet-not-created"/>
     </h1>
-    <div>
-        <a href="${pageContext.request.contextPath}/controller?command=MAIN" class="btn btn-primary btn-lg mt-5">
-            <fmt:message key="error.return-main"/>
-        </a>
-    </div>
 </div>
 
 <jsp:include page="components/footer.jsp"/>

@@ -25,8 +25,6 @@ x
 Hsrc/main/java/by/training/task08/services/builder/CandiesDomBuilder.java,4\7\4789112d6ce14725d1845f1d7da39dac49d677bd
 a
 1src/main/java/by/training/task08/view/Runner.java,5\4\547e6123f5ad3503cae357bcbdcffba977679a92
-C
-web/WEB-INF/web.xml,c\d\cdcc12da5c4054f6995aab32914d7e0243194c05
 ~
 Nsrc/main/java/by/training/task08/controller/exception/ControllerException.java,0\8\08d0bf8353779771ddb27563133fe4064fc5686c
 i
@@ -47,3 +45,5 @@ t
 Dsrc/main/java/by/training/task08/controller/command/CommandName.java,d\a\da7e71fdec68b355ef66350b79c82bccd79402b2
 x
 Hsrc/main/java/by/training/task08/controller/command/CommandProvider.java,7\9\79df1b092a139f35ca15c7bd7023311a4f638cb9
+C
+web/WEB-INF/web.xml,c\d\cdcc12da5c4054f6995aab32914d7e0243194c05

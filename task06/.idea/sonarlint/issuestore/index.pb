@@ -7,12 +7,6 @@ e
 5src/main/java/by/training/task06/dao/InfoDataDao.java,0\3\0388baed9e6da2229c335c9074b1b39d2aa1a089
 d
 4src/main/java/by/training/task06/dao/DaoFactory.java,f\1\f12befb8b434d7b8466e4672a09b243aa7e2681f
-u
-Esrc/main/java/by/training/task06/services/filling/FillRandomTime.java,b\1\b1e83227b023602a24a546f162dd8d7579732fa7
-q
-Asrc/main/java/by/training/task06/services/filling/FillRandom.java,9\e\9e4544ce6ac00f1fcd16a2588f8294a1c06919b6
-o
-?src/main/java/by/training/task06/services/filling/FillSize.java,d\2\d26246913ae7e582c285a763f92bbd2fb46479d6
 z
 Jsrc/main/java/by/training/task06/services/exception/ServicesException.java,0\8\0878980b7aceba4d29f3d47eba4338fd77b86da0
 v
@@ -33,8 +27,6 @@ c
 3src/main/java/by/training/task06/dao/MatrixDao.java,2\0\20c08a56e15209c4de3dfe2c4c6653276558b2d5
 ƒ
 Ssrc/main/java/by/training/task06/services/creator/impl/SquareMatrixCreatorImpl.java,1\6\16bc76dc6724820ce149e590d606bd656c642a9b
-k
-;src/main/java/by/training/task06/beans/MatrixSingleton.java,d\e\debe92c2acf8cda510e9e1dbd569f33a5bebc011
 d
 4src/main/java/by/training/task06/beans/InfoData.java,b\9\b929e901a0da6b11712bfd9dace539e1971e7901
 n
@@ -57,3 +49,5 @@ s
 Csrc/main/java/by/training/task06/services/filling/impl/FillMod.java,3\9\39d677f30a4a5dd9c8ceacce8536d06f184c81dc
 e
 5src/main/java/by/training/task06/controller/Main.java,a\f\af9c9a9803913971901c428d7cee45f5e91ad169
+k
+;src/main/java/by/training/task06/beans/MatrixSingleton.java,d\e\debe92c2acf8cda510e9e1dbd569f33a5bebc011

@@ -2,7 +2,6 @@ package by.training.project.beans;
 
 public enum Role { // TODO Защита от удаления отеля, когда вводим url с роли клиент
     // TODO защита от get, когда запрос Post
-    // TODO проверить на ввод скриптов прямо в поля
     // TODO можно страну с JOIN
     // TODO чек кластиризованный индекс
     // TODO ALTER Table Create Index

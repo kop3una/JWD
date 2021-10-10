@@ -4,6 +4,8 @@ import by.training.project.controller.command.*;
 import by.training.project.controller.command.rout.Rout;
 import by.training.project.dao.exception.DaoException;
 import by.training.project.dao.pool.ConnectionPool;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,19 +18,22 @@ import java.util.Optional;
 @WebServlet(urlPatterns = "/controller")
 public class Controller extends HttpServlet {
     private static final CommandProvider commandProvider = new CommandProvider();
+    private final Logger logger = LogManager.getLogger(Controller.class);
 
     public Controller() {
         super();
     }
 
     @Override
-    public void init() throws ServletException { // TODO exepction;
+    public void init() throws ServletException {
         try {
             ConnectionPool.getInstance().init();
+            super.init();
         } catch (DaoException e) {
-            e.printStackTrace();
+            logger.fatal("Servlet can't init");
+            throw new ServletException("Servlet can't init");
         }
-        super.init();
+
     }
 
     @Override

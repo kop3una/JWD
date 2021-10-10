@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : 'ru'}"/>
+<fmt:setLocale value="${sessionScope.locale != null ? sessionScope.locale : initParam['defaultLocale']}"/>
 <fmt:setBundle basename="resources"/>
 <html>
 <head>
-    <%@ include file="components/head-tags.jsp" %>
+    <jsp:include page="components/head-tags.jsp"/>
     <title><fmt:message key="main.name-of-Web-Site"/></title>
 </head>
 <body>
@@ -60,5 +60,7 @@
             </tbody>
         </table>
 </div>
+
+<jsp:include page="components/footer.jsp"/>
 </body>
 </html>
