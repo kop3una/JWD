@@ -145,3 +145,7 @@ k
 ;src/main/java/by/training/project/dao/impl/UserDaoImpl.java,b\9\b9805879ba08adffb989b832a0abfdf6e4b2f92d
 e
 5src/main/java/by/training/project/dao/DaoFactory.java,0\a\0aae5b19f43a01b92b2368a2f5c43446e6a88774
+l
+<src/main/java/by/training/project/controller/Controller.java,a\c\ac61ff51bc0688953d41caa0ae95dcd262898b7c
+C
+web/WEB-INF/web.xml,c\d\cdcc12da5c4054f6995aab32914d7e0243194c05
