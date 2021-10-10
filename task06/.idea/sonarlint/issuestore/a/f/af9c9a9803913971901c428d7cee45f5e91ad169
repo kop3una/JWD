@@ -1,0 +1,6 @@
+
+N	java:S106&"9Replace this use of System.out or System.err by a logger.(¸Ë‰á
+l
+java:S1128"ORemove this unused import 'by.training.task06.beans.exception.MatrixExepction'.(ã™£Ò8Œ¬¿–Å/
+k
+java:S1128"NRemove this unused import 'by.training.task06.services.creator.MatrixCreator'.(­êˆ±8Œ¬¿–Å/

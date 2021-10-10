@@ -1,0 +1,26 @@
+
+m
+java:S1192"RDefine a constant instead of duplicating this literal " Ñ‚Ğ¾Ğ²Ğ°Ñ€(Ğ¾Ğ²)" 4 times.(ÌŠ¤õşÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(òÄ§
+J
+java:S6212"/Declare this local variable with "var" instead.(ó’³êùÿÿÿÿ
+f	java:S116"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¶Àşÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(é¶Àşÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÌŠ¤õşÿÿÿÿ
+S	java:S106""9Replace this use of System.out or System.err by a logger.(ÌŠ¤õşÿÿÿÿ
+P
+java:S11612":Add the "@Override" annotation above this method signature(“–ış
+{
+java:S21429"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ÚÑ£†ª/
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(’á™¨ıÿÿÿÿ
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(½èµšøÿÿÿÿ
+f	java:S116C"LRename this field "N" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¶Àşÿÿÿÿ
+<
+java:S1170C"!Make this final field static too.(é¶Àşÿÿÿÿ
+P
+java:S1161H":Add the "@Override" annotation above this method signature(“–ış
+{
+java:S2142P"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ŞÑ£†ª/
+Z	java:S106M"9Replace this use of System.out or System.err by a logger.(Ù½…€úÿÿÿÿ8ßÑ£†ª/
+Z	java:S106Q"9Replace this use of System.out or System.err by a logger.(ñ©’úÿÿÿÿ8àÑ£†ª/

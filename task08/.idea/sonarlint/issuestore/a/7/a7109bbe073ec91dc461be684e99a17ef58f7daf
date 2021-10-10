@@ -1,0 +1,29 @@
+
+7	java:S131A""Add a default case to this switch.(ÜŸ•
+s	java:S131D"YComplete cases by adding the missing enum constants or add a default case to this switch.(Ş–í°üÿÿÿÿ
+7	java:S131r""Add a default case to this switch.(ÜŸ•
+s	java:S131u"YComplete cases by adding the missing enum constants or add a default case to this switch.(Ş–í°üÿÿÿÿ
+8	java:S131–""Add a default case to this switch.(ÜŸ•
+t	java:S131™"YComplete cases by adding the missing enum constants or add a default case to this switch.(Ş–í°üÿÿÿÿ
+8	java:S131½""Add a default case to this switch.(ÜŸ•
+t	java:S131À"YComplete cases by adding the missing enum constants or add a default case to this switch.(Ş–í°üÿÿÿÿ
+8	java:S131Ú""Add a default case to this switch.(ÜŸ•
+t	java:S131İ"YComplete cases by adding the missing enum constants or add a default case to this switch.(Ş–í°üÿÿÿÿ
+a
+java:S1301A"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+a
+java:S1301r"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+b
+java:S1301–"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+b
+java:S1301½"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+g
+java:S1301À"KReplace this "switch" statement by "if" statements to increase readability.(Ş–í°üÿÿÿÿ
+b
+java:S1301Ú"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+g
+java:S1301İ"KReplace this "switch" statement by "if" statements to increase readability.(Ş–í°üÿÿÿÿ
+f
+java:S2259R"K"NullPointerException" will be thrown when invoking method "processDate()".(´†Œ¼şÿÿÿÿ
+f
+java:S2259F"K"NullPointerException" will be thrown when invoking method "processName()".(‰Æ‰Çÿÿÿÿÿ

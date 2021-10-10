@@ -1,0 +1,14 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Å©Ñ¤ÿÿÿÿÿ
+n
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(‰£´Ÿ8¶ü€ƒª/
+N	java:S106"9Replace this use of System.out or System.err by a logger.(‰£´Ÿ
+L
+java:S6212"/Declare this local variable with "var" instead.(…œ¿¿8·ü€ƒª/
+N	java:S106"9Replace this use of System.out or System.err by a logger.(â¾Ù¿
+{
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¸ü€ƒª/
+S	java:S106"9Replace this use of System.out or System.err by a logger.(‰ø¨žúÿÿÿÿ
+s
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(ÂÓïóûÿÿÿÿ8¹ü€ƒª/
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÂÓïóûÿÿÿÿ

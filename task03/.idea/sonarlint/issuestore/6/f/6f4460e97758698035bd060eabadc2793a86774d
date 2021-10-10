@@ -1,0 +1,38 @@
+
+q
+java:S1192x"ODefine a constant instead of duplicating this literal "Matrix error: " 3 times.(ß‹¬¢üÿÿÿÿ8ô¤ÁÁ¨/
+p
+java:S11928"NDefine a constant instead of duplicating this literal "3. Ğ’Ñ‹Ñ…Ğ¾Ğ´" 3 times.(àùÃ·ùÿÿÿÿ8ô¤ÁÁ¨/
+Y
+java:S2629"7Use the built-in formatting to construct this argument.(òúØ¹ÿÿÿÿÿ8õ¤ÁÁ¨/
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(àÉùÓùÿÿÿÿ8‰¥ÁÁ¨/
+O
+java:S1135"2Complete the task associated to this TODO comment.(–ÎĞ„8›¥ÁÁ¨/
+U	java:S1066"9Replace this use of System.out or System.err by a logger.(Ûªµû8¢¥ÁÁ¨/
+U	java:S106<"9Replace this use of System.out or System.err by a logger.(×Ş£Ô8£¥ÁÁ¨/
+U	java:S106G"9Replace this use of System.out or System.err by a logger.(Å¥©…8¤¥ÁÁ¨/
+Z	java:S106P"9Replace this use of System.out or System.err by a logger.(«ÍÅ»ùÿÿÿÿ8¤¥ÁÁ¨/
+U	java:S106V"9Replace this use of System.out or System.err by a logger.(ÈÉ·ü8¥¥ÁÁ¨/
+L
+java:S6212q"/Declare this local variable with "var" instead.(äÆ¾Ó8¨¥ÁÁ¨/
+Z	java:S106r"9Replace this use of System.out or System.err by a logger.(Üˆ¦üÿÿÿÿ8©¥ÁÁ¨/
+L
+java:S6212u"/Declare this local variable with "var" instead.(÷É¸’8ª¥ÁÁ¨/
+Z	java:S106v"9Replace this use of System.out or System.err by a logger.(€¹•ôıÿÿÿÿ8«¥ÁÁ¨/
+[	java:S106¢"9Replace this use of System.out or System.err by a logger.(æœäÁşÿÿÿÿ8´¥ÁÁ¨/
+M
+java:S6212¨"/Declare this local variable with "var" instead.(äÆ¾Ó8µ¥ÁÁ¨/
+V	java:S106©"9Replace this use of System.out or System.err by a logger.(âûËş8¶¥ÁÁ¨/
+[	java:S106«"9Replace this use of System.out or System.err by a logger.(³ÄÔüÿÿÿÿ8·¥ÁÁ¨/
+M
+java:S6212®"/Declare this local variable with "var" instead.(ìÎ¸¶8·¥ÁÁ¨/
+[	java:S106¯"9Replace this use of System.out or System.err by a logger.(€¹•ôıÿÿÿÿ8¸¥ÁÁ¨/
+M
+java:S6212¹"/Declare this local variable with "var" instead.(äÆ¾Ó8º¥ÁÁ¨/
+[	java:S106º"9Replace this use of System.out or System.err by a logger.(áÕÓ›üÿÿÿÿ8º¥ÁÁ¨/
+V	java:S106¼"9Replace this use of System.out or System.err by a logger.(´šÆ8»¥ÁÁ¨/
+R
+java:S6212½"/Declare this local variable with "var" instead.(Ÿ¨îÑüÿÿÿÿ8»¥ÁÁ¨/
+R
+java:S6212¿"/Declare this local variable with "var" instead.(™ÇÕşÿÿÿÿÿ8¼¥ÁÁ¨/
+[	java:S106À"9Replace this use of System.out or System.err by a logger.(€¹•ôıÿÿÿÿ8½¥ÁÁ¨/

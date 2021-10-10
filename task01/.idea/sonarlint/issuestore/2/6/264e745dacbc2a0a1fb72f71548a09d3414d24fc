@@ -1,0 +1,27 @@
+
+R
+java:S2629/"7Use the built-in formatting to construct this argument.(òâ´üÿÿÿÿ
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Çµí‘
+S	java:S106""9Replace this use of System.out or System.err by a logger.(Şñ·Çşÿÿÿÿ
+\
+java:S3457/"AFormat specifiers should be used instead of string concatenation.(òâ´üÿÿÿÿ
+<	java:S1311""Add a default case to this switch.(¾«œÛıÿÿÿÿ
+N	java:S1064"9Replace this use of System.out or System.err by a logger.(ÊÇü
+S	java:S1069"9Replace this use of System.out or System.err by a logger.(¦“áƒıÿÿÿÿ
+S	java:S106<"9Replace this use of System.out or System.err by a logger.(ôÃù¯øÿÿÿÿ
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(à¬àŞûÿÿÿÿ
+N	java:S106E"9Replace this use of System.out or System.err by a logger.(ÙÒ¥§
+l
+java:S3457H"Q%n should be used in place of \n to produce the platform-specific line separator.(ñó¹êşÿÿÿÿ
+S	java:S106H"9Replace this use of System.out or System.err by a logger.(ñó¹êşÿÿÿÿ
+N	java:S106M"9Replace this use of System.out or System.err by a logger.(¥£èÛ
+N	java:S106R"9Replace this use of System.out or System.err by a logger.(ƒë¶­
+N	java:S106W"9Replace this use of System.out or System.err by a logger.(¦ÑĞ‘
+N	java:S106["9Replace this use of System.out or System.err by a logger.(ûçÜ¼
+l
+java:S3457^"Q%n should be used in place of \n to produce the platform-specific line separator.(«¼ºÅûÿÿÿÿ
+S	java:S106^"9Replace this use of System.out or System.err by a logger.(«¼ºÅûÿÿÿÿ
+S	java:S106d"9Replace this use of System.out or System.err by a logger.(–ªÈÔùÿÿÿÿ
+N	java:S106h"9Replace this use of System.out or System.err by a logger.(ìäëÈ
+N	java:S106n"9Replace this use of System.out or System.err by a logger.(úØ”Ó

@@ -1,0 +1,29 @@
+
+W	java:S125"<This block of commented-out lines of code should be removed.(Ó¯ğ;8²ÂëÅ/
+X	java:S125"<This block of commented-out lines of code should be removed.(…äå´8»ÂëÅ/
+€
+java:S21429"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(Öââşÿÿÿÿ8ÀÃëÅ/
+J	java:S1080")Either remove or fill this block of code.(Ú¼›ßşÿÿÿÿ8ÌÃëÅ/
+X	java:S1256"<This block of commented-out lines of code should be removed.(¨ƒ¶8ÑÃëÅ/
+]	java:S125:"<This block of commented-out lines of code should be removed.(¾‘‘øşÿÿÿÿ8ÒÃëÅ/
+X	java:S125?"<This block of commented-out lines of code should be removed.(ö¢ş8ÔÃëÅ/
+€
+java:S2142L"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(‰ˆ‘½şÿÿÿÿ8ŞÃëÅ/
+]	java:S125J"<This block of commented-out lines of code should be removed.(¥Ò•ˆÿÿÿÿÿ8âÃëÅ/
+X	java:S125M"<This block of commented-out lines of code should be removed.(¨ÒÈ8ãÃëÅ/
+E	java:S108P")Either remove or fill this block of code.(ßÄ²8åÃëÅ/
+€
+java:S2142c"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(Û˜š›üÿÿÿÿ8èÃëÅ/
+]	java:S125["<This block of commented-out lines of code should be removed.(æ–äÎüÿÿÿÿ8ŠÄëÅ/
+X	java:S125d"<This block of commented-out lines of code should be removed.(Øê¼Ì8•ÄëÅ/
+O
+java:S1135o"2Complete the task associated to this TODO comment.(óª¨ø8™ÄëÅ/
+J	java:S108z")Either remove or fill this block of code.(Ú¼›ßşÿÿÿÿ8§ÄëÅ/
+Q
+java:S1656_"/Remove or correct this useless self-assignment.(´öïÛùÿÿÿÿ8¨ÄëÅ/
+_
+java:S1128"BRemove this unused import 'by.training.project.dao.config.Config'.(‘ó£û8·ÄëÅ/
+W
+java:S1141."5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8½ÄëÅ/
+–
+java:S4165_"tRemove this useless assignment; "checkConnectionTimeout" already holds the assigned value along all execution paths.(´öïÛùÿÿÿÿ8¹ÆëÅ/

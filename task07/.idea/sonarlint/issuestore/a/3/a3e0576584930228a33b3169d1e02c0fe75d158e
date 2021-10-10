@@ -1,0 +1,8 @@
+
+a
+java:S1854"DRemove this useless assignment to local variable "paragraphHandler".(›´Ê—8´¡¸Òµ/
+R
+java:S1481"5Remove this unused "paragraphHandler" local variable.(›´Ê—8¹¡¸Òµ/
+]	java:S125"<This block of commented-out lines of code should be removed.(Æ¼ÍÛÿÿÿÿÿ8™ï¶Òµ/
+f
+java:S1128"DRemove this unused import 'by.training.task07.dao.impl.FileTextDao'.(°ëø®ýÿÿÿÿ8â¦·Òµ/

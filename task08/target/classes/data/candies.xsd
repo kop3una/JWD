@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.training.by/beans"
+        xmlns:tns="http://www.training.by/beans"
+        elementFormDefault="qualified">
+    <element name="candies">
+        <complexType>
+            <sequence>
+                <element ref="tns:product"
+                         minOccurs="16"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Product">
+        <sequence>
+            <element name="name">
+                <simpleType>
+                    <restriction base="ID"/>
+                </simpleType>
+            </element>
+            <element name="energy" type="int"/>
+        </sequence>
+    </complexType>
+    <element name="product" type="tns:Product" abstract="true"/>
+    <element name="candy" type="tns:Candy" substitutionGroup="tns:product"/>
+    <complexType name="Candy">
+        <complexContent>
+            <extension base="tns:Product">
+                <sequence>
+                    <element name="type">
+                        <simpleType>
+                            <restriction base="string">
+                                <enumeration value="суфле"/>
+                                <enumeration value="шоколадная"/>
+                                <enumeration value="шоколадная с орехами"/>
+                                <enumeration value="желатин"/>
+                                <enumeration value="карамель"/>
+                                <enumeration value="жевательная"/>
+                            </restriction>
+                        </simpleType>
+                    </element >
+                    <element name="ingredients" type="tns:Ingredients"/>
+                    <element name="value" type="tns:Value"/>
+                    <element name="production" type="string"/>
+                    <element name="date_manufactured" type="date"/>
+                </sequence>
+                <attribute name="price" use="optional">
+                    <simpleType>
+                        <restriction base="string">
+                            <pattern value="[0-9]+([.,][0-9]{2})?[$РрPp]"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+                <attribute name="country" use="required">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="BY"/>
+                            <enumeration value="RU"/>
+                            <enumeration value="EN"/>
+                            <enumeration value="DE"/>
+                            <enumeration value="UA"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="Value">
+        <all>
+            <element name="proteins">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxInclusive value="100.0"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="fats">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxInclusive value="100.0"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="carbohydrates">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxInclusive value="100.0"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </all>
+    </complexType>
+    <complexType name="Ingredients">
+        <all>
+            <element name="water" type="int" minOccurs="0"/>
+            <element name="caramel" type="int" minOccurs="0"/>
+            <element name="sugar" type="int" minOccurs="0"/>
+            <element name="fructose" type="int" minOccurs="0"/>
+            <element name="chocolate" type="tns:Chocolate" minOccurs="0"/>
+            <element name="oil" type="int" minOccurs="0"/>
+            <element name="milk" type="int" minOccurs="0"/>
+            <element name="sourCream" type="int" minOccurs="0"/>
+            <element name="condensedMilk" type="int" minOccurs="0"/>
+            <element name="eggsProtein" type="int" minOccurs="0"/>
+            <element name="nuts" type="tns:Nuts" minOccurs="0"/>
+            <element name="gelatin" type="int" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="Chocolate">
+        <all>
+            <element name="typeChocolate">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="белый"/>
+                        <enumeration value="молочный"/>
+                        <enumeration value="темный"/>
+                        <enumeration value="горький"/>
+                        <enumeration value="какао"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="weight" type="int"/>
+        </all>
+    </complexType>
+    <complexType name="Nuts">
+        <all>
+            <element name="typeNuts">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="фундук"/>
+                        <enumeration value="арахис"/>
+                        <enumeration value="смешанные орехи"/>
+                        <enumeration value="миндаль"/>
+                        <enumeration value="грецкий орех"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="weight" type="int"/>
+        </all>
+    </complexType>
+</schema>

@@ -1,0 +1,25 @@
+
+Y
+java:S25890"7Remove this expression which always evaluates to "true"(¡þ÷ øÿÿÿÿ8Þä¹Ö¨/
+i
+java:S1128
+"LRemove this unused import 'by.training.task04.view.MessageManagerSingleton'.(é¢´Ë8Þä¹Ö¨/
+Y
+java:S1128
+"CRemove this unused import 'by.training.task04.view.MessageManager'.(ÌêÌ¢
+J
+java:S6212"/Declare this local variable with "var" instead.(ºªéµûÿÿÿÿ
+J
+java:S6212 "/Declare this local variable with "var" instead.(õƒÿÜþÿÿÿÿ
+E
+java:S6212""/Declare this local variable with "var" instead.(¤ÏÝþ
+J
+java:S6212#"/Declare this local variable with "var" instead.(»ýµ‡ûÿÿÿÿ
+J
+java:S6212."/Declare this local variable with "var" instead.(Ìå¹¤ùÿÿÿÿ
+J
+java:S6212/"/Declare this local variable with "var" instead.(¾§¶‹üÿÿÿÿ
+J
+java:S62126"/Declare this local variable with "var" instead.(õƒÿÜþÿÿÿÿ
+J
+java:S62128"/Declare this local variable with "var" instead.(»ýµ‡ûÿÿÿÿ

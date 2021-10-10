@@ -1,0 +1,394 @@
+<?xml version ="1.0" encoding = "UTF-8"?>
+<candies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.training.by/beans"
+         xsi:schemaLocation="http://www.training.by/beans  candies.xsd">
+    <candy price="2р" country="BY">
+        <name>
+            Птичье_молоко
+        </name>
+        <energy>
+            250
+        </energy>
+        <type>суфле</type>
+        <ingredients>
+            <water>
+                140
+            </water>
+            <sugar>
+                300
+            </sugar>
+            <chocolate>
+                <typeChocolate>молочный</typeChocolate>
+                <weight>100</weight>
+            </chocolate>
+            <oil>
+                200
+            </oil>
+            <condensedMilk>
+                100
+            </condensedMilk>
+            <eggsProtein>
+                60
+            </eggsProtein>
+        </ingredients>
+        <value>
+            <proteins>
+                2.5
+            </proteins>
+            <fats>
+                24.4
+            </fats>
+            <carbohydrates>
+                55.2
+            </carbohydrates>
+        </value>
+        <production>Коммунарка
+        </production>
+        <date_manufactured>2021-05-21</date_manufactured>
+    </candy>
+    <candy country="BY">
+        <name>
+            Суфле
+        </name>
+        <energy>
+            270
+        </energy>
+        <type>суфле</type>
+        <ingredients>
+            <water>140</water>
+            <sugar>200</sugar>
+            <eggsProtein>240</eggsProtein>
+            <chocolate>
+                <typeChocolate>темный</typeChocolate>
+                <weight>240</weight>
+            </chocolate>
+            <milk>100</milk>
+        </ingredients>
+        <value>
+            <proteins>
+                3
+            </proteins>
+            <fats>
+                19
+            </fats>
+            <carbohydrates>
+                45
+            </carbohydrates>
+        </value>
+        <production>Красный Пищевик</production>
+        <date_manufactured>2021-05-23</date_manufactured>
+    </candy>
+    <candy country="BY" price="0.50$">
+        <name>
+            Грильяж
+        </name>
+        <energy>
+            300
+        </energy>
+        <type>шоколадная с орехами</type>
+        <ingredients>
+            <sugar>300</sugar>
+            <water>100</water>
+            <milk>30</milk>
+            <nuts>
+                <typeNuts>грецкий орех</typeNuts>
+                <weight>500</weight>
+            </nuts>
+        </ingredients>
+        <value>
+            <proteins>
+                2.6
+            </proteins>
+            <fats>
+                26.7
+            </fats>
+            <carbohydrates>
+                64.3
+            </carbohydrates>
+        </value>
+        <production>Коммунарка</production>
+        <date_manufactured>2021-03-23</date_manufactured>
+    </candy>
+    <candy country="UA" price="5.99р">
+        <name>Бешеная_пчелка</name>
+        <energy>300</energy>
+        <type>карамель</type>
+        <ingredients>
+            <sugar>
+                300
+            </sugar>
+            <fructose>30</fructose>
+            <gelatin>150</gelatin>
+        </ingredients>
+        <value>
+            <proteins>0.3</proteins>
+            <fats>0.6</fats>
+            <carbohydrates>79.5</carbohydrates>
+        </value>
+        <production>ROSHEN</production>
+        <date_manufactured>2021-06-20</date_manufactured>
+    </candy>
+    <candy country="UA">
+        <name>Ириски</name>
+        <energy>500</energy>
+        <type>карамель</type>
+        <ingredients>
+            <sugar>500</sugar>
+            <sourCream>750</sourCream>
+        </ingredients>
+        <value>
+            <proteins>0.4</proteins>
+            <fats>30</fats>
+            <carbohydrates>40</carbohydrates>
+        </value>
+        <production>ROSHEN</production>
+        <date_manufactured>2021-06-09</date_manufactured>
+    </candy>
+    <candy country="EN">
+        <name>Bubble_Gums</name>
+        <energy>50</energy>
+        <type>жевательная</type>
+        <ingredients>
+            <oil>30</oil>
+            <caramel>100</caramel>
+            <gelatin>40</gelatin>
+            <milk>500</milk>
+        </ingredients>
+        <value>
+            <proteins>1.7</proteins>
+            <fats>0.3</fats>
+            <carbohydrates>16.0</carbohydrates>
+        </value>
+        <production>Candy Manufactured inc.</production>
+        <date_manufactured>2021-12-12</date_manufactured>
+    </candy>
+    <candy country="DE">
+        <name>Snikers</name>
+        <energy>400</energy>
+        <type>шоколадная с орехами</type>
+        <ingredients>
+            <milk>300</milk>
+            <chocolate>
+                <typeChocolate>молочный</typeChocolate>
+                <weight>200</weight>
+            </chocolate>
+            <caramel>125</caramel>
+            <nuts>
+                <typeNuts>арахис</typeNuts>
+                <weight>100</weight>
+            </nuts>
+            <sourCream>25</sourCream>
+        </ingredients>
+        <value>
+            <proteins>5</proteins>
+            <fats>2.3</fats>
+            <carbohydrates>77.4</carbohydrates>
+        </value>
+        <production>Coca-cola company</production>
+        <date_manufactured>2022-01-20</date_manufactured>
+    </candy>
+    <candy country="UA" price="9.99р">
+        <name>Шоколапки</name>
+        <energy>235</energy>
+        <type>шоколадная</type>
+        <ingredients>
+            <milk>400</milk>
+            <sugar>100</sugar>
+            <oil>10</oil>
+            <sourCream>100</sourCream>
+            <chocolate>
+                <typeChocolate>горький</typeChocolate>
+                <weight>500</weight>
+            </chocolate>
+            <eggsProtein>100</eggsProtein>
+        </ingredients>
+        <value>
+            <proteins>12.3</proteins>
+            <fats>0.3</fats>
+            <carbohydrates>45.5</carbohydrates>
+        </value>
+        <production>ROSHEN</production>
+        <date_manufactured>2019-01-09</date_manufactured>
+    </candy>
+    <candy country="BY" price="7.99р">
+        <name>Желатиновые_змейки</name>
+        <energy>230</energy>
+        <type>желатин</type>
+        <ingredients>
+            <gelatin>300</gelatin>
+            <water>1000</water>
+            <fructose>125</fructose>
+        </ingredients>
+        <value>
+            <proteins>5.3</proteins>
+            <fats>0.8</fats>
+            <carbohydrates>50.1</carbohydrates>
+        </value>
+        <production>Бон Пари</production>
+        <date_manufactured>2020-10-20</date_manufactured>
+    </candy>
+    <candy country="RU">
+        <name>Кремль</name>
+        <energy>250</energy>
+        <type>шоколадная с орехами</type>
+        <ingredients>
+            <chocolate>
+                <typeChocolate>молочный</typeChocolate>
+                <weight>350</weight>
+            </chocolate>
+            <nuts>
+                <typeNuts>миндаль</typeNuts>
+                <weight>450</weight>
+            </nuts>
+            <caramel>200</caramel>
+            <eggsProtein>100</eggsProtein>
+        </ingredients>
+        <value>
+            <proteins>20</proteins>
+            <fats>4.7</fats>
+            <carbohydrates>33.3</carbohydrates>
+        </value>
+        <production>Кремль</production>
+        <date_manufactured>2020-05-05</date_manufactured>
+    </candy>
+    <candy country="BY">
+        <name>Зефир_в_шоколаде</name>
+        <energy>380</energy>
+        <type>суфле</type>
+        <ingredients>
+            <sugar>300</sugar>
+            <chocolate>
+                <typeChocolate>молочный</typeChocolate>
+                <weight>250</weight>
+            </chocolate>
+            <water>250</water>
+            <sourCream>200</sourCream>
+            <eggsProtein>350</eggsProtein>
+        </ingredients>
+        <value>
+            <proteins>25</proteins>
+            <fats>3.5</fats>
+            <carbohydrates>25</carbohydrates>
+        </value>
+        <production>Зефир бай</production>
+        <date_manufactured>2015-03-04</date_manufactured>
+    </candy>
+    <candy country="BY" price="3.99$">
+        <name>Беларусачка</name>
+        <energy>250</energy>
+        <type>карамель</type>
+        <ingredients>
+            <chocolate>
+                <typeChocolate>молочный</typeChocolate>
+                <weight>200</weight>
+            </chocolate>
+            <caramel>500</caramel>
+            <oil>50</oil>
+            <condensedMilk>300</condensedMilk>
+        </ingredients>
+        <value>
+            <proteins>3.3</proteins>
+            <fats>15.4</fats>
+            <carbohydrates>44.4</carbohydrates>
+        </value>
+        <production>Зефир Бай</production>
+        <date_manufactured>2021-01-02</date_manufactured>
+    </candy>
+    <candy country="RU">
+        <name>Фундук_в_карамели</name>
+        <energy>400</energy>
+        <type>карамель</type>
+        <ingredients>
+            <nuts>
+                <typeNuts>фундук</typeNuts>
+                <weight>500</weight>
+            </nuts>
+            <caramel>300</caramel>
+            <milk>300</milk>
+            <gelatin>100</gelatin>
+        </ingredients>
+        <value>
+            <proteins>20.4</proteins>
+            <fats>5.3</fats>
+            <carbohydrates>70.8</carbohydrates>
+        </value>
+        <production>Орехи ру</production>
+        <date_manufactured>2021-10-11</date_manufactured>
+    </candy>
+    <candy country="DE">
+        <name>Бизе</name>
+        <energy>500</energy>
+        <type>суфле</type>
+        <ingredients>
+            <eggsProtein>500</eggsProtein>
+            <oil>100</oil>
+            <sugar>350</sugar>
+        </ingredients>
+        <value>
+            <proteins>35.5</proteins>
+            <fats>14.5</fats>
+            <carbohydrates>45</carbohydrates>
+        </value>
+        <production>Немецкие конфеты</production>
+        <date_manufactured>2020-09-10</date_manufactured>
+    </candy>
+    <candy country="EN">
+        <name>Pic-Nic</name>
+        <energy>350</energy>
+        <type>шоколадная с орехами</type>
+        <ingredients>
+            <nuts>
+                <typeNuts>смешанные орехи</typeNuts>
+                <weight>300</weight>
+            </nuts>
+            <caramel>300</caramel>
+            <chocolate>
+                <typeChocolate>белый</typeChocolate>
+                <weight>340</weight>
+            </chocolate>
+            <gelatin>100</gelatin>
+        </ingredients>
+        <value>
+            <proteins>25</proteins>
+            <fats>10</fats>
+            <carbohydrates>30</carbohydrates>
+        </value>
+        <production>Candy Manufactured inc.</production>
+        <date_manufactured>2021-05-05</date_manufactured>
+    </candy>
+    <candy country="EN">
+        <name>Левая_палочка_твикс</name>
+        <energy>150</energy>
+        <type>шоколадная</type>
+        <ingredients/>
+        <value>
+            <proteins>3</proteins>
+            <fats>3</fats>
+            <carbohydrates>10</carbohydrates>
+        </value>
+        <production>Левая палочка твикс компани</production>
+        <date_manufactured>2020-10-10</date_manufactured>
+    </candy>
+    <candy country="EN">
+        <name>Правая_палочка_твикс</name>
+        <energy>150</energy>
+        <type>шоколадная</type>
+        <ingredients/>
+        <value>
+            <proteins>3</proteins>
+            <fats>3</fats>
+            <carbohydrates>10</carbohydrates>
+        </value>
+        <production>Правая палочка твикс компани</production>
+        <date_manufactured>2020-10-10</date_manufactured>
+    </candy>
+</candies>
+
+        <!--Конфеты-->
+        <!--Name – название конфеты.-->
+        <!--Energy– калорийность (ккал).-->
+        <!--Type (должно быть несколько) – тип конфеты (карамель, шоколадная [с начинкой либо нет]).-->
+        <!--Ingredients (должно быть несколько) – ингредиенты: вода, сахар (в мг), фруктоза (в мг), тип шоколада (для шоколадных), ванилин (в мг)-->
+        <!--Value – пищевая ценность: белки (в гр.), жиры (в гр.) и углеводы (в гр.).-->
+        <!--Production – предприятие-изготовитель.-->
+        <!--Корневой элемент назвать Candies.-->

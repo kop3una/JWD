@@ -1,0 +1,14 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¡Üè
+C
+java:S1604"(Make this anonymous inner class a lambda(şìœûÿÿÿÿ
+>
+java:S1604"(Make this anonymous inner class a lambda(“¨—
+k	java:S116
+"VRename this field "BIDS_NUMBER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ã©ö
+7
+java:S1170
+"!Make this final field static too.(¢ã©ö
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(•²´øÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(†ÙÎÌ

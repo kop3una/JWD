@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="task08">
+    <output-path>$PROJECT_DIR$/out/artifacts/task08</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="task08/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="task08" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.14.1" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.14.1" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-web:2.14.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

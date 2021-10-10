@@ -1,0 +1,16 @@
+
+€
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(²ı…¦ûÿÿÿÿ8„Ú²…ª/
+J	java:S108")Either remove or fill this block of code.(²ı…¦ûÿÿÿÿ8…Ú²…ª/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(úĞ¦Åüÿÿÿÿ8†Ú²…ª/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(ëèˆ¼8†Ú²…ª/
+R
+java:S2446"0"notify" may not wake up the appropriate thread.(óÄ£¶øÿÿÿÿ8‡Ú²…ª/
+€
+java:S2142#"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(²ı…¦ûÿÿÿÿ8ˆÚ²…ª/
+J	java:S108#")Either remove or fill this block of code.(²ı…¦ûÿÿÿÿ8ˆÚ²…ª/
+Z	java:S106'"9Replace this use of System.out or System.err by a logger.(µ¨éúÿÿÿÿ8‰Ú²…ª/
+U	java:S106("9Replace this use of System.out or System.err by a logger.(ëèˆ¼8ŠÚ²…ª/
+R
+java:S2446)"0"notify" may not wake up the appropriate thread.(óÄ£¶øÿÿÿÿ8ŠÚ²…ª/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ä÷Ñ¤

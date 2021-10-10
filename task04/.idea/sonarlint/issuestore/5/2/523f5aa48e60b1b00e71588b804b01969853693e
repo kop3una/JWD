@@ -1,0 +1,27 @@
+
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(àÉùÓùÿÿÿÿ8·¸´…½/
+T
+java:S1135"2Complete the task associated to this TODO comment.(”Ñ©Áûÿÿÿÿ8»¸´…½/
+B
+java:S3010"%Remove this assignment of "language".(Î¼æ¬8¿¸´…½/
+R
+java:S2209"5Change this instance-reference to a static reference.(Î¼æ¬8¿¸´…½/
+Z
+java:S1854"8Remove this useless assignment to local variable "text".(Ìå¹¤ùÿÿÿÿ8Â¸´…½/
+X	java:S1255"<This block of commented-out lines of code should be removed.(Ü¼ì¨8Ï¸´…½/
+]	java:S1257"<This block of commented-out lines of code should be removed.(÷º¾Ëþÿÿÿÿ8Ò¸´…½/
+P
+java:S1172A".Remove this unused method parameter "request".(Ð±ÂÚÿÿÿÿÿ8Ö¸´…½/
+C
+java:S1168T"&Return an empty array instead of null.(¥¹ï8Ö¸´…½/
+]	java:S125B"<This block of commented-out lines of code should be removed.(“µÿÿÿÿÿ8×¸´…½/
+W
+java:S2209X"5Change this instance-reference to a static reference.(…ü´‡úÿÿÿÿ8Ù¸´…½/
+I
+java:S1068",Remove this unused "language" private field.(ã£–÷8Ú¸´…½/
+[
+java:S1068"9Remove this unused "DELIMITER_UNDERSÐ¡ORE" private field.(àÉùÓùÿÿÿÿ8Ú¸´…½/
+W
+java:S1144A"5Remove this unused private "parseCommandMatr" method.(Ð±ÂÚÿÿÿÿÿ8Ú¸´…½/
+W
+java:S1143,"5Remove this return statement from this finally block.(áÿèˆýÿÿÿÿ8Ü¸´…½/

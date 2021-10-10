@@ -1,0 +1,11 @@
+
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ê°’6
+S	java:S106"9Replace this use of System.out or System.err by a logger.(‰‰ËŠùÿÿÿÿ
+T	java:S106#"9Replace this use of System.out or System.err by a logger.(ê°’68ğ ÒØÄ/
+Z	java:S106$"9Replace this use of System.out or System.err by a logger.(‰‰ËŠùÿÿÿÿ8¶ÉÒØÄ/
+t
+java:S1128	"WRemove this unused import 'by.training.task05.services.observer.FigureCharacteristics'.(ùòü8¨óüÙÄ/
+m
+java:S1128"KRemove this unused import 'by.training.task05.services.observer.Publisher'.(µ› Ğûÿÿÿÿ8¨óüÙÄ/
+s
+java:S1128"WRemove this unused import 'by.training.task05.services.observer.SubscriberTetrahedron'.(ëù¬X8¨óüÙÄ/
