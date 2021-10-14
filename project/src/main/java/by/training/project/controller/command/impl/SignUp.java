@@ -5,14 +5,13 @@ import by.training.project.controller.command.*;
 import by.training.project.controller.command.rout.Rout;
 import by.training.project.controller.command.rout.RoutingType;
 import by.training.project.service.ServiceFactory;
-import by.training.project.service.UserService;
-import by.training.project.service.exception.ServiceException;
+import by.training.project.service.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
-public class SignUp implements Command { // TODO не забыть, что при оформлении заказа или редактировании нужно заполнить инфу о себе !!! выдавать как ошибкой
+public class SignUp implements Command {
     @Override
     public Rout execute(HttpServletRequest request, HttpServletResponse response) {
         Optional<String> email = Optional.ofNullable(request.getParameter(RequestParameter.EMAIL));
@@ -26,8 +25,8 @@ public class SignUp implements Command { // TODO не забыть, что пр�
 
         UserService userService = ServiceFactory.getInstance().getUserService();
 
-        if (userService.register(email.get(),password.get(), Role.valueOf(role.get()))){ //TODO PROFILE PAGE
-            return new Rout(PagePath.MAIN_PAGE_REDIRECT, RoutingType.REDIRECT);
+        if (userService.register(email.get(),password.get(), Role.valueOf(role.get()), (String) request.getSession().getAttribute(SessionAttribute.LOCALE))){
+               return new Rout(PagePath.MAIL_CHECK_REDIRECT, RoutingType.REDIRECT);
         } else {
             request.getSession().setAttribute(SessionAttribute.ERROR, ErrorKey.ERROR_DONT_REGISTRATION);
             return new Rout(PagePath.ERROR_PAGE_REDIRECT, RoutingType.REDIRECT);

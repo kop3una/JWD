@@ -14,7 +14,7 @@
     </h1>
     <div>
         <a href="${pageContext.request.contextPath}/controller?command=MAIN" class="btn btn-primary btn-lg mt-5">
-            <fmt:message key="error.return-main"/>
+            <fmt:message key="return-main"/>
         </a>
     </div>
 </div>

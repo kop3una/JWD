@@ -1,6 +1,8 @@
 package by.training.project.beans;
 
-import by.training.project.service.hashing.SHA256Hashing;
+import by.training.project.service.ServiceFactory;
+import by.training.project.service.hashing.HashingService;
+import by.training.project.service.hashing.impl.SHA256Hashing;
 
 import java.util.Objects;
 
@@ -24,7 +26,8 @@ public class User extends Entity{
     }
 
     public void setPassword(String password) {
-        this.password = SHA256Hashing.hashing(password);
+        HashingService sha256 =  ServiceFactory.getInstance().getSHA256Hashing();
+        this.password = sha256.hashing(password);
     }
 
     public Role getRole() {

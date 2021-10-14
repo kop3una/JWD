@@ -1,14 +1,17 @@
-package by.training.project.service.impl;
+package by.training.project.service.user.impl;
 
 import by.training.project.beans.Role;
 import by.training.project.beans.User;
 import by.training.project.dao.DaoFactory;
 import by.training.project.dao.UserDao;
 import by.training.project.dao.exception.DaoException;
-import by.training.project.service.UserService;
+import by.training.project.service.ServiceFactory;
 import by.training.project.service.exception.ServiceException;
+import by.training.project.service.hashing.HashingService;
+import by.training.project.service.mail.MailService;
 import by.training.project.service.reader.ReaderFactory;
 import by.training.project.service.reader.UserReader;
+import by.training.project.service.user.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,19 +36,25 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public boolean register(String email, String password, Role role){
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setRole(role);
+    public boolean register(String email, String password, Role role, String locale) { // TODO locale
+        MailService mailService = ServiceFactory.getInstance().getMailService();
+        HashingService sha256 = ServiceFactory.getInstance().getSHA256Hashing();
         UserDao userDao = DaoFactory.getInstance().getUserDao();
+        User user;
         try {
-            int newID = userDao.create(user);
-            user.setId(newID);
+            user = userDao.read(email);
         } catch (DaoException e) {
-            logger.debug(e);
             return false;
         }
-        return true;
+
+        if (!email.equals(mailService.getEmail()) && user == null) {
+            if (mailService.sendApprovalRegistration(email, sha256.hashing(password), role.toString(), locale)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }

@@ -5,9 +5,10 @@ import by.training.project.controller.command.*;
 import by.training.project.controller.command.rout.Rout;
 import by.training.project.controller.command.rout.RoutingType;
 import by.training.project.service.ServiceFactory;
-import by.training.project.service.UserService;
+import by.training.project.service.hashing.HashingService;
+import by.training.project.service.user.UserService;
 import by.training.project.service.exception.ServiceException;
-import by.training.project.service.hashing.SHA256Hashing;
+import by.training.project.service.hashing.impl.SHA256Hashing;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,8 @@ public class LogIn implements Command { // TODO do log in in page
             return new Rout(PagePath.ERROR_PAGE_REDIRECT, RoutingType.REDIRECT);
         }
 
-        password = Optional.of(SHA256Hashing.hashing(RequestParameter.PASSWORD));
+        HashingService sha256 = ServiceFactory.getInstance().getSHA256Hashing();
+        password = Optional.of(sha256.hashing(RequestParameter.PASSWORD));
 
         UserService userService = ServiceFactory.getInstance().getUserService();
         User user;

@@ -1,3 +1,2 @@
 
-\
-java:S1128"?Remove this unused import 'by.training.project.dao.DaoFactory'.(òÚ¿Ó8‰¹×ğÁ/
+m	java:S116"XRename this field "SHA256Hashing" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åéÿ

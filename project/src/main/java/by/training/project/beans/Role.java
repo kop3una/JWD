@@ -10,7 +10,6 @@ public enum Role { // TODO Защита от удаления отеля, ког
     // TODO к пагинации limits offset
     // TODO запросы обищй метод думать
     // TODO ограничение пароля и полей на символыъ
-    // TODO изменить MD5
     ADMINISTRATOR (0),
     CLIENT (1),
     TOUROPERATOR (2);

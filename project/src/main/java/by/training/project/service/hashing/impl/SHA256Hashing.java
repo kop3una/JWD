@@ -1,16 +1,18 @@
-package by.training.project.service.hashing;
+package by.training.project.service.hashing.impl;
+
+import by.training.project.service.hashing.HashingService;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SHA256Hashing {
-    private SHA256Hashing() {
+public class SHA256Hashing implements HashingService {
+    public SHA256Hashing() {
     }
 
-    public static String hashing(String password) {
+    public String hashing(String password) {
         MessageDigest sha256 = null;
         try {
-            sha256 = MessageDigest.getInstance("SHA256");
+            sha256 = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

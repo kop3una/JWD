@@ -12,5 +12,10 @@ public final class PagePath {
 
     public static final String SIGN_UP_PAGE = "WEB-INF/pages/signup.jsp";
 
+    public static final String CONTINUE_SIGN_UP_PAGE_REDIRECT ="/controller?command=SHOW_CONTINUE_SIGN_UP";
+
+    public static final String MAIL_CHECK = "WEB-INF/pages/mailcheck.jsp";
+    public static final String MAIL_CHECK_REDIRECT = "/controller?command=SHOW_CHECK_MAIL_PAGE";
+
     private PagePath(){};
 }
