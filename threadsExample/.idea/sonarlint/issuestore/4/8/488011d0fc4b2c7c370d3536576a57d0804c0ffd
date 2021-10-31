@@ -1,0 +1,12 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ûÕ…ø
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ê¨ŠÇùÿÿÿÿ
+V	java:S125 "<This block of commented-out lines of code should be removed.(éóôßøÿÿÿÿ
+V	java:S125#"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+Q	java:S125+"<This block of commented-out lines of code should be removed.(Í°üË
+Q	java:S125."<This block of commented-out lines of code should be removed.(ß¼«
+>
+java:S1604"(Make this anonymous inner class a lambda(ÉãÃ®
+>
+java:S1604("(Make this anonymous inner class a lambda(ÉãÃ®
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ª³ÎÈ

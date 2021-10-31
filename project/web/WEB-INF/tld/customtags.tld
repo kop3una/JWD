@@ -11,7 +11,7 @@
 
     <tag>
         <name>footerTag</name>
-        <tag-class>by.training.project.service.tag.FooterTag</tag-class>
+        <tag-class>by.training.project.view.tag.FooterTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>author</name>

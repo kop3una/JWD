@@ -10,6 +10,21 @@
         <param-value>ru</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>defaultPage</param-name>
+        <param-value>1</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>paginationCountHotelOnPage</param-name>
+        <param-value>2</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>maxCountPagination</param-name>
+        <param-value>5</param-value>
+    </context-param>
+
     <error-page>
         <exception-type>javax.servlet.ServletException</exception-type>
         <location>/WEB-INF/pages/errorservlet.jsp</location>
@@ -18,7 +33,11 @@
     <error-page>
         <error-code>500</error-code>
         <location>/WEB-INF/pages/error500.jsp</location>
+    </error-page>
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/pages/error404.jsp</location>
     </error-page>
 
     <jsp-config>

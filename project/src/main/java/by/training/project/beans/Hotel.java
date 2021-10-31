@@ -1,8 +1,10 @@
 package by.training.project.beans;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
-public class Hotel extends Entity { // TODO inner class, todo toString equals hashCode\
+public class Hotel extends Entity {
 
     private Facilities facilities;
     private Prices prices;
@@ -86,6 +88,33 @@ public class Hotel extends Entity { // TODO inner class, todo toString equals ha
 
         public void setBusiness(boolean business) {
             this.business = business;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Facilities that = (Facilities) o;
+            return typeFood == that.typeFood && typeAllocation == that.typeAllocation && typeComfort == that.typeComfort && typeRoom == that.typeRoom && parking == that.parking && wifi == that.wifi && pets == that.pets && business == that.business;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(typeFood, typeAllocation, typeComfort, typeRoom, parking, wifi, pets, business);
+        }
+
+        @Override
+        public String toString() {
+            return "Facilities{" +
+                    "typeFood=" + typeFood +
+                    ", typeAllocation=" + typeAllocation +
+                    ", typeComfort=" + typeComfort +
+                    ", typeRoom=" + typeRoom +
+                    ", parking=" + parking +
+                    ", wifi=" + wifi +
+                    ", pets=" + pets +
+                    ", business=" + business +
+                    '}';
         }
     }
 
@@ -180,6 +209,31 @@ public class Hotel extends Entity { // TODO inner class, todo toString equals ha
             }
             return priceComfortStr.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Prices prices = (Prices) o;
+            return rewardTourOperator == prices.rewardTourOperator && Arrays.equals(priceRoom, prices.priceRoom) && Arrays.equals(priceComfort, prices.priceComfort);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = Objects.hash(rewardTourOperator);
+            result = 31 * result + Arrays.hashCode(priceRoom);
+            result = 31 * result + Arrays.hashCode(priceComfort);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "Prices{" +
+                    "priceRoom=" + Arrays.toString(priceRoom) +
+                    ", priceComfort=" + Arrays.toString(priceComfort) +
+                    ", rewardTourOperator=" + rewardTourOperator +
+                    '}';
+        }
     }
 
     public class Address {
@@ -240,6 +294,19 @@ public class Hotel extends Entity { // TODO inner class, todo toString equals ha
         public void setBuilding(int building) {
             this.building = building;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Address address = (Address) o;
+            return house == address.house && building == address.building && countryCode.equals(address.countryCode) && countryName.equals(address.countryName) && city.equals(address.city) && street.equals(address.street);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(countryCode, countryName, city, street, house, building);
+        }
     }
 
     private List<Room> listRoom;
@@ -292,5 +359,32 @@ public class Hotel extends Entity { // TODO inner class, todo toString equals ha
 
     public void setListRoom(List<Room> listRoom) {
         this.listRoom = listRoom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Hotel)) return false;
+        if (!super.equals(o)) return false;
+        Hotel hotel = (Hotel) o;
+        return adminId == hotel.adminId && stars == hotel.stars && facilities.equals(hotel.facilities) && prices.equals(hotel.prices) && address.equals(hotel.address) && name.equals(hotel.name) && listRoom.equals(hotel.listRoom);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), facilities, prices, address, adminId, name, stars, listRoom);
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "facilities=" + facilities.toString() +
+                ", prices=" + prices.toString() +
+                ", address=" + address.toString() +
+                ", adminId=" + adminId +
+                ", name='" + name + '\'' +
+                ", stars=" + stars +
+                ", listRoom=" + listRoom +
+                "} " + super.toString();
     }
 }

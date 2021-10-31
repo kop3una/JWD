@@ -2,8 +2,8 @@ package by.training.project.controller;
 
 import by.training.project.controller.command.*;
 import by.training.project.controller.command.rout.Rout;
-import by.training.project.dao.exception.DaoException;
-import by.training.project.dao.pool.ConnectionPool;
+import by.training.project.service.exception.ServiceException;
+import by.training.project.service.wrapper.InitWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,9 +27,9 @@ public class Controller extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            ConnectionPool.getInstance().init();
+            InitWrapper.getInstance().init();
             super.init();
-        } catch (DaoException e) {
+        } catch (ServiceException e) {
             logger.fatal("Servlet can't init");
             throw new ServletException("Servlet can't init");
         }
@@ -48,7 +48,7 @@ public class Controller extends HttpServlet {
 
     private static void processCommand(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<String> commandName = Optional.ofNullable(request.getParameter(RequestParameter.COMMAND));
-        if (commandName.isPresent()) {// TODO question about NullPointerException
+        if (commandName.isPresent()) {
             Command command = commandProvider.getCommand(commandName.get());
             Rout rout = command.execute(request, response);
 

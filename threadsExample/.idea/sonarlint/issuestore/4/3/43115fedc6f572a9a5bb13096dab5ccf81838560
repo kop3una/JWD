@@ -1,0 +1,15 @@
+
+P
+java:S1161":Add the "@Override" annotation above this method signature(“–ýþ
+t
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÅÅ°²
+S	java:S106"9Replace this use of System.out or System.err by a logger.(õ©´õùÿÿÿÿ
+P
+java:S1161":Add the "@Override" annotation above this method signature(“–ýþ
+t
+java:S2142 "^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+S	java:S106"9Replace this use of System.out or System.err by a logger.(˜Üõ³þÿÿÿÿ
+_
+java:S1192"IDefine a constant instead of duplicating this literal "Element " 3 times.(ÅÅ°²
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Î¯Èõ

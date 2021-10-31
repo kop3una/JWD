@@ -23,7 +23,3 @@ b
 java:S1301Ú"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
 g
 java:S1301İ"KReplace this "switch" statement by "if" statements to increase readability.(Ş–í°üÿÿÿÿ
-f
-java:S2259R"K"NullPointerException" will be thrown when invoking method "processDate()".(´†Œ¼şÿÿÿÿ
-f
-java:S2259F"K"NullPointerException" will be thrown when invoking method "processName()".(‰Æ‰Çÿÿÿÿÿ

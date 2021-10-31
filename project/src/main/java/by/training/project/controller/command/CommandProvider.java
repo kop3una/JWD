@@ -15,7 +15,16 @@ public class CommandProvider {
         repository.put(CommandName.SHOW_SIGN_UP, new ShowSignUp());
         repository.put(CommandName.SHOW_CHECK_MAIL_PAGE, new ShowCheckMailPage());
         repository.put(CommandName.SIGN_UP, new SignUp());
+        repository.put(CommandName.SHOW_CONTINUE_SIGN_UP, new ShowContinueSignUp());
+        repository.put(CommandName.CONTINUE_SIGN_UP, new ContinueSignUp());
+        repository.put(CommandName.LOG_OUT, new LogOut());
         repository.put(CommandName.ERROR_404, new Error404());
+        repository.put(CommandName.SHOW_EDIT, new ShowEditPage());
+        repository.put(CommandName.EDIT_PASSWORD, new EditPassword());
+        repository.put(CommandName.SHOW_EDIT_PASSWORD, new ShowEditPassword());
+        repository.put(CommandName.SHOW_SUCCESS_PASSWORD_PAGE, new ShowSuccessEditPassword());
+        repository.put(CommandName.SHOW_BOOKING, new ShowBooking());
+        repository.put(CommandName.CONTINUE_BOOKING, new ContinueBooking());
     }
 
     public Command getCommand(String name) {

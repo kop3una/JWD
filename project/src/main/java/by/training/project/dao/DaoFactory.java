@@ -1,5 +1,6 @@
 package by.training.project.dao;
 
+import by.training.project.beans.Entity;
 import by.training.project.dao.impl.*;
 
 public final class DaoFactory {
@@ -15,11 +16,11 @@ public final class DaoFactory {
     public static DaoFactory getInstance(){
         return instance;
     }
-    public UserDao getUserDao(){
-        return userDaoImpl;
+    public <T extends Dao<? extends Entity>> T getUserDao(){
+        return (T) userDaoImpl;
     }
-    public UserInfoDao getUserInfoDao() { return userInfoDaoImpl; }
-    public TourOrgInfoDao getTourOrganizationInfoDao() { return tourOrganizationInfoDaoImpl; }
+    public <T extends Dao<? extends Entity>> T getUserInfoDao() { return (T)userInfoDaoImpl; }
+    public <T extends Dao<? extends Entity>> T getTourOrganizationInfoDao() {return (T)tourOrganizationInfoDaoImpl; }
     public HotelDao getHotelDao() { return hotelDaoImpl; }
     public CountriesDao getCountriesDao() { return countriesDaoImpl; }
     public RoomDao getRoomDao() { return roomDaoImpl; }

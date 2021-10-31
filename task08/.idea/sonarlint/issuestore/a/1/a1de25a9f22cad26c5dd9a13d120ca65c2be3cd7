@@ -7,5 +7,3 @@ P
 java:S1161A":Add the "@Override" annotation above this method signature(¼þÙÃ
 \
 java:S3457l"AFormat specifiers should be used instead of string concatenation.(é±¾Êýÿÿÿÿ
-w
-java:S2629l"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(é±¾Êýÿÿÿÿ

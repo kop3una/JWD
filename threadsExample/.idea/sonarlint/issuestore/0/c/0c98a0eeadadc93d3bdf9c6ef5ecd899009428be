@@ -1,13 +1,4 @@
 
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½È«¢şÿÿÿÿ
-E
-java:S6212"/Declare this local variable with "var" instead.(’Ï§‹
-E
-java:S6212"/Declare this local variable with "var" instead.(Ş¢±×
-E
-java:S6212	"/Declare this local variable with "var" instead.(óö‡˜
-Q
-java:S6212"/Declare this local variable with "var" instead.(ıÜñ üÿÿÿÿ8Öà„ª/
 n
 java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(–’ïË8‚Öà„ª/
 U	java:S106"9Replace this use of System.out or System.err by a logger.(–’ïË8‚Öà„ª/
@@ -16,3 +7,4 @@ java:S2142$"^Either re-interrupt this method or rethrow the "InterruptedExcepti
 `
 java:S2276""CReplace the call to "Thread.sleep(...)" with a call to "wait(...)".(á˜ ¶8ƒÖà„ª/
 C	java:S108$")Either remove or fill this block of code.(ğ‹Ù¼ùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½È«¢şÿÿÿÿ

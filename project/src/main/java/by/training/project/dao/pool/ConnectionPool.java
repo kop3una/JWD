@@ -17,6 +17,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class ConnectionPool {
+    private static final ConnectionPool instance = new ConnectionPool();
+
     private static final String DB_URL_PROP = "db.url";
     private static final String DB_USER_PROP = "db.user";
     private static final String DB_PASSWORD_PROP = "db.password";
@@ -111,8 +113,6 @@ public final class ConnectionPool {
             locker.unlock();
         }
     }
-
-    private static final ConnectionPool instance = new ConnectionPool();
 
     public static ConnectionPool getInstance() {
         return instance;

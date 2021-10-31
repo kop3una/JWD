@@ -9,7 +9,7 @@ CREATE TABLE `countries` (
 CREATE TABLE `users` (
                          `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
                          `email` VARCHAR(255) NOT NULL UNIQUE,
-                         `password` NCHAR(32),
+                         `password` NCHAR(64),
     /*
      * 0 - администратор (Role.ADMINISTRATOR)
      * 1 - клиент (Role.Client)
@@ -37,12 +37,12 @@ CREATE TABLE `users_info` (
                              `phone` BIGINT NOT NULL,
                              `passport` CHAR(9) UNIQUE NOT NULL,
                              `date_of_birthday` DATE NOT NULL,
-                             `sex` BOOLEAN NOT NULL,
+                             `sex` BOOLEAN NOT NULL, /* 0 - man, 1 - woman */
                              `code_country` CHAR(3) NOT NULL,
                              CONSTRAINT FK_users_info_users FOREIGN KEY (`user_id`)
                                  REFERENCES `users` (`id`)
                                  ON UPDATE CASCADE
-                                 ON DELETE CASCADE,
+                                 ON DELETE RESTRICT,
                              CONSTRAINT FK_users_info_countries FOREIGN KEY (`code_country`)
                                  REFERENCES `countries` (`code`)
                                  ON UPDATE CASCADE
@@ -57,7 +57,7 @@ CREATE TABLE `hotels` (
                           `type_of_food` TINYINT NOT NULL CHECK (`type_of_food` < 32),
                           #no, breakfast, half board,full board,all
                           `type_of_allocation` TINYINT NOT NULL CHECK (`type_of_allocation`< 32),
-                          #single,double,triple,extra (4 people), child
+                          #single,double,triple,extra (4 people), child (1 people)
                           `type_of_comfort` TINYINT NOT NULL CHECK  (`type_of_comfort` > 0 AND `type_of_comfort` < 16),
                           #standart,family,luxe,suite
                           `price_of_room` VARCHAR(25) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `hotels` (
                           `wifi` BOOLEAN NOT NULL,
                           `pets` BOOLEAN NOT NULL,
                           `business_center` BOOLEAN NOT NULL,
-                          `countries_id` CHAR (3) NOT NULL UNIQUE,
+                          `countries_id` CHAR (3) NOT NULL,
                           `city` VARCHAR(20) NOT NULL ,
                           `street` VARCHAR(50) NOT NULL ,
                           `house` SMALLINT,
@@ -94,15 +94,15 @@ CREATE TABLE `rooms` (
                           CONSTRAINT FK_rooms_hotels FOREIGN KEY (`hotel_id`)
                               REFERENCES `hotels` (`id`)
                               ON UPDATE CASCADE
-                              ON DELETE CASCADE,
+                              ON DELETE RESTRICT,
                           CONSTRAINT PK_rooms PRIMARY KEY (`number`,`hotel_id`)
 ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE `booking` (
     `number` INTEGER NOT NULL,
     `hotel_id` INTEGER NOT NULL,
-    `date_arrival` INTEGER NOT NULL,
-    `date_department` INTEGER NOT NULL,
+    `date_arrival` DATE NOT NULL,
+    `date_department` DATE NOT NULL,
     CONSTRAINT FK_booking_rooms FOREIGN KEY (`number`,`hotel_id`)
         REFERENCES `rooms` (`number`,`hotel_id`)
         ON UPDATE CASCADE
@@ -113,8 +113,8 @@ CREATE TABLE `orders` (
                               `id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
                               `hotel_id` INTEGER NOT NULL,
                               `number` INTEGER NOT NULL,
-                              `date_arrival` DATETIME NOT NULL,
-                              `date_department` DATETIME NOT NULL,
+                              `date_arrival` DATE NOT NULL,
+                              `date_department` DATE NOT NULL,
                               `price` INT NOT NULL,
                               #`count_of_rooms` VARCHAR(16) NOT NULL,
                               `type_of_food` TINYINT NOT NULL CHECK (`type_of_food` <= 5),

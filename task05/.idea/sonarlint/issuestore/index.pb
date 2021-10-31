@@ -21,10 +21,6 @@ Fsrc/main/java/by/training/task05/services/calculation/Calculation.java,5\3\538
 Msrc/main/java/by/training/task05/services/observer/SubscriberTetrahedron.java,7\7\778a1cde2a230734faa01f746299aa5a8e79c33d
 w
 Gsrc/main/java/by/training/task05/services/observer/ObserverManager.java,5\f\5f14d3924a4205e7fed0049c0f605ed46c26a7c3
-m
-=src/main/java/by/training/task05/beans/FiguresRepository.java,0\0\0079922c9040d4b168388918113b1c4184ae527a
-f
-6src/main/java/by/training/task05/beans/Repository.java,e\5\e5c670a65d3d4850fd1d56dfd7cbf6f536fd2cb9
 }
 Msrc/main/java/by/training/task05/services/observer/FigureCharacteristics.java,5\a\5a75207a9f7cfcdf253cc7e1d07c634e15ed7f98
 q
@@ -39,3 +35,7 @@ _
 /src/main/java/by/training/task05/beans/Dot.java,7\7\777f4ba575a72d27bf2352ea62e3f74ec2beb603
 g
 7src/main/java/by/training/task05/controller/Runner.java,f\8\f8abde83bb3d1dc1ad37dd5f574c03481353ed38
+f
+6src/main/java/by/training/task05/beans/Repository.java,e\5\e5c670a65d3d4850fd1d56dfd7cbf6f536fd2cb9
+m
+=src/main/java/by/training/task05/beans/FiguresRepository.java,0\0\0079922c9040d4b168388918113b1c4184ae527a

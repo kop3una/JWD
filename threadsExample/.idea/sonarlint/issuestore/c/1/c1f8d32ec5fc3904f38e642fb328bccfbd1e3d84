@@ -1,10 +1,4 @@
 
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(˜ÛŞøÿÿÿÿ
-Q
-java:S6212	"/Declare this local variable with "var" instead.(Œ®¶åÿÿÿÿÿ8¦é¥ª/
-L
-java:S6212
-"/Declare this local variable with "var" instead.(¶…òÆ8Õ¹¥ª/
 \
 java:S1161":Add the "@Override" annotation above this method signature(ÿŸ¾Ğüÿÿÿÿ8Ú¹¥ª/
 €
@@ -12,3 +6,4 @@ java:S21421"^Either re-interrupt this method or rethrow the "InterruptedExcepti
 Z	java:S106%"9Replace this use of System.out or System.err by a logger.(¡¥•©úÿÿÿÿ8Ü¹¥ª/
 Z	java:S106*"9Replace this use of System.out or System.err by a logger.(¨éÇúÿÿÿÿ8İ¹¥ª/
 Z	java:S1063"9Replace this use of System.out or System.err by a logger.(°ï şÿÿÿÿ8Ş¹¥ª/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(˜ÛŞøÿÿÿÿ

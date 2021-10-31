@@ -3,18 +3,14 @@ package by.training.project.dao.impl;
 import by.training.project.beans.User;
 import by.training.project.dao.UserDao;
 import by.training.project.dao.exception.DaoException;
-import by.training.project.dao.pool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     private final Logger logger = LogManager.getLogger(UserDaoImpl.class);
     private static final String SQL_INSERT = "INSERT INTO `users` (`email`, `password`, `role`) VALUES (?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM `users` WHERE `users`.`id` = ?";
@@ -24,11 +20,11 @@ public class UserDaoImpl implements UserDao {
     private static final String SQL_UPDATE = "UPDATE `users` SET `email`=?,`password`=?,`role`=? WHERE `users`.`id` = ?";
 
     @Override
-    public int create(User user) throws DaoException {
+    public Integer create(User user) throws DaoException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setInt(3, user.getRole().getValue());
@@ -36,7 +32,7 @@ public class UserDaoImpl implements UserDao {
             resultSet = statement.getGeneratedKeys();
             resultSet.next();
             return resultSet.getInt(1);
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -51,13 +47,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User read(int identity) throws DaoException {
+    public User read(Integer... identity) throws DaoException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         User user = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ONE);
-            statement.setInt(1, identity);
+            statement = connection.prepareStatement(SQL_SELECT_ONE);
+            statement.setInt(1, identity[0]);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 if (resultSet.next()){
@@ -68,7 +64,7 @@ public class UserDaoImpl implements UserDao {
                     user.setRole(resultSet.getInt(4));
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -89,7 +85,7 @@ public class UserDaoImpl implements UserDao {
         ResultSet resultSet = null;
         User user = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_EMAIL);
+            statement = connection.prepareStatement(SQL_SELECT_EMAIL);
             statement.setString(1, email);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
@@ -101,7 +97,7 @@ public class UserDaoImpl implements UserDao {
                     user.setRole(resultSet.getInt(4));
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -121,13 +117,13 @@ public class UserDaoImpl implements UserDao {
         PreparedStatement statement = null;
 
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_UPDATE);
+            statement = connection.prepareStatement(SQL_UPDATE);
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getPassword());
             statement.setInt(3, user.getRole().getValue());
             statement.setInt(4, user.getId());
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -141,13 +137,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(int identity) throws DaoException { // make return boolean
+    public boolean delete(Integer ... identity) throws DaoException { // make return boolean
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_DELETE);
-            statement.setInt(1, identity);
+            statement = connection.prepareStatement(SQL_DELETE);
+            statement.setInt(1, identity[0]);
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -166,7 +162,7 @@ public class UserDaoImpl implements UserDao {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ALL);
+            statement = connection.prepareStatement(SQL_SELECT_ALL);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 while (resultSet.next()) {
@@ -178,7 +174,7 @@ public class UserDaoImpl implements UserDao {
                     userList.add(user);
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -191,5 +187,10 @@ public class UserDaoImpl implements UserDao {
             }
         }
         return userList;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        super.connection = connection;
     }
 }

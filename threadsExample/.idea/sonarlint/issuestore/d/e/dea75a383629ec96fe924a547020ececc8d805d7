@@ -1,0 +1,16 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¤‹ìëûÿÿÿÿ
+t
+java:S2142""^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+S	java:S106#"9Replace this use of System.out or System.err by a logger.(æüŞıÿÿÿÿ
+S	java:S106&"9Replace this use of System.out or System.err by a logger.(°óóõúÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(ãÀËïüÿÿÿÿ
+2
+java:S16430"Use a StringBuilder instead.(Õä–
+1
+java:S16433"Use a StringBuilder instead.(£³£.
+2
+java:S16434"Use a StringBuilder instead.(üÒÒœ
+2
+java:S1700"Rename field "sequence"(âœ¦–ÿÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(î¬¼è

@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface UserDao extends Dao<User> {
     @Override
-    int create(User user) throws DaoException;
+    Integer create(User user) throws DaoException;
 
     @Override
-    User read(int identity) throws DaoException;
+    User read(Integer... identity) throws DaoException;
 
     User read(String email) throws DaoException;
 
@@ -18,7 +18,7 @@ public interface UserDao extends Dao<User> {
     boolean update(User user) throws DaoException;
 
     @Override
-    boolean delete(int identity) throws DaoException;
+    boolean delete(Integer ... identity) throws DaoException;
 
     @Override
     List<User> read() throws DaoException;

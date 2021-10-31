@@ -25,7 +25,7 @@ public class SignUp implements Command {
 
         UserService userService = ServiceFactory.getInstance().getUserService();
 
-        if (userService.register(email.get(),password.get(), Role.valueOf(role.get()), (String) request.getSession().getAttribute(SessionAttribute.LOCALE))){
+        if (userService.sendMailForRegister(request.getSession(),email.get(),password.get(), Role.valueOf(role.get()), (String) request.getSession().getAttribute(SessionAttribute.LOCALE))){
                return new Rout(PagePath.MAIL_CHECK_REDIRECT, RoutingType.REDIRECT);
         } else {
             request.getSession().setAttribute(SessionAttribute.ERROR, ErrorKey.ERROR_DONT_REGISTRATION);

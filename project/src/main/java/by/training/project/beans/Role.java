@@ -6,10 +6,10 @@ public enum Role { // TODO Защита от удаления отеля, ког
     // TODO чек кластиризованный индекс
     // TODO ALTER Table Create Index
     // TODO к сожалению ничего не найдено
-    // TODO пользовательские теги
     // TODO к пагинации limits offset
     // TODO запросы обищй метод думать
-    // TODO ограничение пароля и полей на символыъ
+    // TODO ограничение пароля и полей на символы
+
     ADMINISTRATOR (0),
     CLIENT (1),
     TOUROPERATOR (2);
@@ -22,5 +22,12 @@ public enum Role { // TODO Защита от удаления отеля, ког
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "value=" + value +
+                "} " + super.toString();
     }
 }

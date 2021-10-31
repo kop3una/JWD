@@ -1,0 +1,21 @@
+
+
+java:S1149+"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ÏĞÈøÿÿÿÿ8‚´—íÊ/
+o
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(‹¨¯¿8‡´—íÊ/
+„
+java:S1989&"bHandle the following exceptions that could be thrown by "getParts": IOException, ServletException.(Ğ½íÁúÿÿÿÿ8‡´—íÊ/
+r
+java:S1989)"UHandle the following exception that could be thrown by "getInputStream": IOException.(Öˆ×í8‡´—íÊ/
+u
+java:S1989*"SHandle the following exception that could be thrown by "readAllBytes": IOException.(ü†üËúÿÿÿÿ8‡´—íÊ/
+ˆ
+java:S21784"fCorrect this "&" to "&&" and extract the right operand to a variable if it should always be evaluated.(¶‹¯™øÿÿÿÿ8’´—íÊ/
+i
+java:S19896"LHandle the following exception that could be thrown by "write": IOException.(ÕÉ·¼8’´—íÊ/
+~
+java:S1989I"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(€Ú‡8’´—íÊ/
+d
+java:S1192("GDefine a constant instead of duplicating this literal "parser" 3 times.(ÅÔ–§8Ğ´—íÊ/
+P
+java:S11214".Extract the assignment out of this expression.(¶‹¯™øÿÿÿÿ8Ğ´—íÊ/

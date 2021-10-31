@@ -15,11 +15,18 @@ public class RunnablePerson extends Person implements Runnable{
     public static void main (String [] args){
         RunnablePerson p1 = new RunnablePerson("ALice");
         Thread t1 = new Thread(p1);
+        System.out.println(t1.getState());
         t1.start();
         RunnablePerson p2 = new RunnablePerson("Bob");
         Thread t2 = new Thread(p2);
         t2.start();
         System.out.println(t1.getState());
         System.out.println(t2.getState());
+        try {
+            t1.join(100000);
+            System.out.println(t1.getState());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

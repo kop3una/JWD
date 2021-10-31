@@ -3,36 +3,32 @@ package by.training.project.dao.impl;
 import by.training.project.beans.TourOrgInfo;
 import by.training.project.dao.TourOrgInfoDao;
 import by.training.project.dao.exception.DaoException;
-import by.training.project.dao.pool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
+public class TourOrgInfoDaoImpl extends BaseDaoImpl implements TourOrgInfoDao {
     private final Logger logger = LogManager.getLogger(TourOrgInfoDaoImpl.class);
     private static final String SQL_INSERT = "INSERT INTO `tour_organization_info`(`user_id`, `tour_organization`, `license`) VALUES (?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM `tour_organization_info` WHERE `tour_organization_info`.`id` = ?";
     private static final String SQL_SELECT_ALL = "SELECT `user_id`, `tour_organization`, `license` FROM `tour_organization_info`";
-    private static final String SQL_SELECT_ONE = "SELECT `user_id`, `tour_organization`, `license` FROM `tour_organization_info` WHERE `tour_organization`.`id`=?";
+    private static final String SQL_SELECT_ONE = "SELECT `user_id`, `tour_organization`, `license` FROM `tour_organization_info` WHERE `user_id`=?";
     private static final String SQL_UPDATE = "UPDATE `tour_organization_info` SET `tour_organization`=?,`license`=? WHERE `tour_organization`.`id` = ?";
 
     @Override
-    public int create(TourOrgInfo tourOrgInfo) throws DaoException {
+    public Integer create(TourOrgInfo tourOrgInfo) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_INSERT, Statement.NO_GENERATED_KEYS);
+            statement = connection.prepareStatement(SQL_INSERT, Statement.NO_GENERATED_KEYS);
             statement.setInt(1, tourOrgInfo.getId());
             statement.setString(2, tourOrgInfo.getTourOrg());
             statement.setString(3, tourOrgInfo.getLicense());
             statement.executeUpdate();
             return tourOrgInfo.getId();
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -46,13 +42,13 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
     }
 
     @Override
-    public TourOrgInfo read(int identity) throws DaoException {
+    public TourOrgInfo read(Integer... identity) throws DaoException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         TourOrgInfo tourOrganizationInfo = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ONE);
-            statement.setInt(1, identity);
+            statement = connection.prepareStatement(SQL_SELECT_ONE);
+            statement.setInt(1, identity[0]);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 if (resultSet.next()){
@@ -62,7 +58,7 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
                     tourOrganizationInfo.setLicense(resultSet.getString(3));
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -81,12 +77,12 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
     public boolean update(TourOrgInfo tourOrgInfo) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_UPDATE);
+            statement = connection.prepareStatement(SQL_UPDATE);
             statement.setInt(3, tourOrgInfo.getId());
             statement.setString(1, tourOrgInfo.getTourOrg());
             statement.setString(2, tourOrgInfo.getLicense());
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -100,13 +96,13 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
     }
 
     @Override
-    public boolean delete(int identity) throws DaoException {
+    public boolean delete(Integer ... identity) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_DELETE);
-            statement.setInt(1, identity);
+            statement = connection.prepareStatement(SQL_DELETE);
+            statement.setInt(1, identity[0]);
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -125,7 +121,7 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ALL);
+            statement = connection.prepareStatement(SQL_SELECT_ALL);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 while (resultSet.next()) {
@@ -136,7 +132,7 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
                     tourOrganizationInfoList.add(tourOrganizationInfo);
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -149,5 +145,10 @@ public class TourOrgInfoDaoImpl implements TourOrgInfoDao {
             }
         }
         return tourOrganizationInfoList;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        super.connection = connection;
     }
 }

@@ -32,6 +32,7 @@ public class MailServiceImpl implements MailService {
     private static final String START_PARAM="?";
     private static final String NEXT_PARAM="&";
     private ResourceBundle mailBundle;
+    private String link ="";
 
     @Override
     public String getEmail() {
@@ -40,6 +41,11 @@ public class MailServiceImpl implements MailService {
         } else {
             return "";
         }
+    }
+
+    @Override
+    public int getLinkHash() {
+        return this.link.hashCode();
     }
 
     @Override
@@ -109,10 +115,11 @@ public class MailServiceImpl implements MailService {
             InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
             Properties config = new Properties();
             config.load(input);
-            return config.getProperty(URL)+START_PARAM+RequestParameter.COMMAND+"="+ CommandName.SHOW_CONTINUE_SIGN_UP+
+            this.link = config.getProperty(URL)+START_PARAM+RequestParameter.COMMAND+"="+ CommandName.SHOW_CONTINUE_SIGN_UP+
                     NEXT_PARAM+RequestParameter.EMAIL+"="+email+
                     NEXT_PARAM+RequestParameter.PASSWORD+"="+password+
                     NEXT_PARAM+RequestParameter.ROLE+"="+role;
+            return this.link;
         } catch (IOException e){
             throw new ServiceException(e);
         }

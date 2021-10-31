@@ -1,6 +1,6 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ùöùÿÿÿÿ8Ùâª¨ª/
-{
 java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Üâª¨ª/
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ùöùÿÿÿÿ8Ùâª¨ª/
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(£éª·

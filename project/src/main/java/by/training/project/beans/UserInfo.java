@@ -12,6 +12,7 @@ public class UserInfo extends Entity{
     private String passport;
     private Date dateBirthDay;
     private char [] codeCountry = new char[3];
+    private String country ;
     private boolean sex;
 
     public String getName() {
@@ -45,6 +46,7 @@ public class UserInfo extends Entity{
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public void setPhone(Long phone) {
         this.phone = "+"+phone;
     }
@@ -77,6 +79,14 @@ public class UserInfo extends Entity{
         this.sex = sex;
     }
 
+    public void setSex(String sex) {
+        if (sex.equals("man")){
+            this.sex = false;
+        } else if (sex.equals("woman")) {
+            this.sex = true;
+        }
+    }
+
     public char[] getCodeCountry() {
         return codeCountry;
     }
@@ -85,13 +95,25 @@ public class UserInfo extends Entity{
         this.codeCountry = codeCountry.toCharArray();
     }
 
+    public void setCodeCountry(char[] codeCountry) {
+        this.codeCountry = codeCountry;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         UserInfo userInfo = (UserInfo) o;
-        return sex == userInfo.sex && name.equals(userInfo.name) && surname.equals(userInfo.surname) && Objects.equals(middleName, userInfo.middleName) && phone.equals(userInfo.phone) && passport.equals(userInfo.passport) && dateBirthDay.equals(userInfo.dateBirthDay) && Arrays.equals(codeCountry, userInfo.codeCountry);
+        return getId()== userInfo.getId() && sex == userInfo.sex && name.equals(userInfo.name) && surname.equals(userInfo.surname) && Objects.equals(middleName, userInfo.middleName) && phone.equals(userInfo.phone) && passport.equals(userInfo.passport) && dateBirthDay.equals(userInfo.dateBirthDay) && Arrays.equals(codeCountry, userInfo.codeCountry);
     }
 
     @Override
@@ -109,9 +131,19 @@ public class UserInfo extends Entity{
                 ", middleName='" + middleName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", passport='" + passport + '\'' +
-                ", date_of_birthday='" + dateBirthDay + '\'' +
-                ", sex=" + sex +
+                ", dateBirthDay=" + dateBirthDay +
                 ", codeCountry=" + Arrays.toString(codeCountry) +
-                '}';
+                ", sex=" + sex +
+                "} " + super.toString();
+    }
+
+    private Long processPhone (String phoneNumber){
+        StringBuilder phoneNumberProc = new StringBuilder();
+        for (int i = 0; i < phoneNumber.length(); i++){
+            if (phoneNumber.charAt(i) >= 48 && phoneNumber.charAt(i) <= 57){
+                phoneNumberProc.append(phoneNumber.charAt(i));
+            }
+        }
+        return Long.valueOf(phoneNumberProc.toString());
     }
 }

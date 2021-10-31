@@ -8,16 +8,16 @@ import java.util.List;
 public interface UserInfoDao extends Dao<UserInfo>{
 
     @Override
-    int create(UserInfo userInfo) throws DaoException;
+    Integer create(UserInfo userInfo) throws DaoException;
 
     @Override
-    UserInfo read(int identity) throws DaoException;
+    UserInfo read(Integer ... identity) throws DaoException;
 
     @Override
     boolean update(UserInfo userInfo) throws DaoException;
 
     @Override
-    boolean delete(int identity) throws DaoException;
+    boolean delete(Integer ... identity) throws DaoException;
 
     @Override
     List<UserInfo> read() throws DaoException;

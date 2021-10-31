@@ -3,17 +3,14 @@ package by.training.project.dao.impl;
 import by.training.project.beans.UserInfo;
 import by.training.project.dao.UserInfoDao;
 import by.training.project.dao.exception.DaoException;
-import by.training.project.dao.pool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfoDaoImpl implements UserInfoDao {
+public class UserInfoDaoImpl extends BaseDaoImpl implements UserInfoDao {
     private final Logger logger = LogManager.getLogger(UserInfoDaoImpl.class);
     private static final String SQL_INSERT = "INSERT INTO `users_info`(`user_id`, `name`, `surname`, `middle_name`, `phone`, `passport`, `date_of_birthday`, `sex`,`code_country`) VALUES (?,?,?,?,?,?,?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM `users_info` WHERE `users_info`.`user_id` = ?";
@@ -22,10 +19,10 @@ public class UserInfoDaoImpl implements UserInfoDao {
     private static final String SQL_UPDATE = "UPDATE `users_info` SET `name`=?,`surname`=?,`middle_name`=?,`phone`=?,`passport`=?,`date_of_birthday`=?,`sex`=?,`code_country`=? WHERE `users_info`.`user_id` = ?";
 
     @Override
-    public int create(UserInfo userInfo) throws DaoException { //TODO check create
+    public Integer create(UserInfo userInfo) throws DaoException { //TODO check create
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_INSERT, Statement.NO_GENERATED_KEYS);
+            statement = connection.prepareStatement(SQL_INSERT, Statement.NO_GENERATED_KEYS);
             statement.setInt(1, userInfo.getId());
             statement.setString(2, userInfo.getName());
             statement.setString(3, userInfo.getSurname());
@@ -37,7 +34,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
             statement.setString(9, String.valueOf(userInfo.getCodeCountry()));
             statement.executeUpdate();
             return userInfo.getId();
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -51,13 +48,13 @@ public class UserInfoDaoImpl implements UserInfoDao {
     }
 
     @Override
-    public UserInfo read(int identity) throws DaoException {
+    public UserInfo read(Integer... identity) throws DaoException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         UserInfo userInfo = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ONE);
-            statement.setInt(1, identity);
+            statement = connection.prepareStatement(SQL_SELECT_ONE);
+            statement.setInt(1, identity[0]);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 if (resultSet.next()){
@@ -73,7 +70,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
                     userInfo.setCodeCountry(resultSet.getString(9));
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -92,7 +89,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
     public boolean update(UserInfo userInfo) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_UPDATE);
+            statement = connection.prepareStatement(SQL_UPDATE);
             statement.setInt(9, userInfo.getId());
             statement.setString(1, userInfo.getName());
             statement.setString(2, userInfo.getSurname());
@@ -103,7 +100,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
             statement.setBoolean(7, userInfo.getSex());
             statement.setString(8, String.valueOf(userInfo.getCodeCountry()));
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -117,13 +114,13 @@ public class UserInfoDaoImpl implements UserInfoDao {
     }
 
     @Override
-    public boolean delete(int identity) throws DaoException {
+    public boolean delete(Integer ... identity) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_DELETE);
-            statement.setInt(1, identity);
+            statement = connection.prepareStatement(SQL_DELETE);
+            statement.setInt(1, identity[0]);
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -142,7 +139,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ALL);
+            statement = connection.prepareStatement(SQL_SELECT_ALL);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 while (resultSet.next()) {
@@ -159,7 +156,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
                     userInfoList.add(userInfo);
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -174,7 +171,18 @@ public class UserInfoDaoImpl implements UserInfoDao {
         return userInfoList;
     }
 
-    private Long executeNumber(String number) { // TODO think about number view
-        return Long.parseLong(number.trim().substring(1));
+    @Override
+    public void setConnection(Connection connection) {
+        super.connection = connection;
+    }
+
+    private Long executeNumber(String phoneNumber) {
+        StringBuilder phoneNumberProc = new StringBuilder();
+        for (int i = 0; i < phoneNumber.length(); i++){
+            if (phoneNumber.charAt(i) >= 48 && phoneNumber.charAt(i) <= 57){
+                phoneNumberProc.append(phoneNumber.charAt(i));
+            }
+        }
+        return Long.valueOf(phoneNumberProc.toString());
     }
 }

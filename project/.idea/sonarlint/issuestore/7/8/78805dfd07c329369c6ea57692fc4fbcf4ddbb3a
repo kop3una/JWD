@@ -1,24 +1,0 @@
-
-H
-java:S2160"+Override the "equals" method in this class.(•–¡Œ8Šº©ÁÂ/
-A
-java:S1068"+Remove this unused "hotelId" private field.(¡Ë†Ö
-@
-java:S1068"*Remove this unused "number" private field.(òù´Ê
-J
-java:S1068"/Remove this unused "dateArrival" private field.(ïÎö‡øÿÿÿÿ
-G
-java:S1068"2Remove this unused "dateDepartment" private field.(ÿúî
-E
-java:S1068"/Remove this unused "timeArrival" private field.(¦Å”š
-M
-java:S1068	"2Remove this unused "timeDepartment" private field.(ÉìĞöÿÿÿÿÿ
->
-java:S1068
-")Remove this unused "price" private field.(ˆÑ€(
-G
-java:S1068",Remove this unused "typeFood" private field.(¨ÖÓ÷şÿÿÿÿ
-M
-java:S1068"2Remove this unused "typeAllocation" private field.(ŞÓÙÏıÿÿÿÿ
-@
-java:S1068"*Remove this unused "status" private field.(·â¼

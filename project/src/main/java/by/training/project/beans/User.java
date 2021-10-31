@@ -26,8 +26,7 @@ public class User extends Entity{
     }
 
     public void setPassword(String password) {
-        HashingService sha256 =  ServiceFactory.getInstance().getSHA256Hashing();
-        this.password = sha256.hashing(password);
+        this.password = password;
     }
 
     public Role getRole() {

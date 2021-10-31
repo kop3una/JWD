@@ -3,17 +3,17 @@ package by.training.project.dao.impl;
 import by.training.project.beans.Room;
 import by.training.project.dao.RoomDao;
 import by.training.project.dao.exception.DaoException;
-import by.training.project.dao.pool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomDaoImpl implements RoomDao {
+public class RoomDaoImpl extends BaseDaoImpl implements RoomDao {
     private final Logger logger = LogManager.getLogger(RoomDaoImpl.class);
     private static final String SQL_INSERT = "INSERT INTO `rooms`(`number`, `hotel_id`, `type_of_allocation`, `type_of_comfort`) VALUES (?,?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM `rooms` WHERE `number` = ? AND `hotel_id` = ?";
@@ -23,18 +23,18 @@ public class RoomDaoImpl implements RoomDao {
     private static final String SQL_UPDATE = "UPDATE `rooms` SET `type_of_allocation`=?,`type_of_comfort`=? WHERE `number` = ? AND `hotel_id` = ?";
 
     @Override
-    public int[] create(Room room) throws DaoException {
+    public Integer create(Room room) throws DaoException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_INSERT);
+            statement = connection.prepareStatement(SQL_INSERT);
             statement.setInt(1,room.getNumber());
             statement.setInt(2,room.getHotelId());
             statement.setInt(3,room.getTypeAllocation());
             statement.setInt(4,room.getTypeComfort());
             statement.executeUpdate();
-            return new int[]{room.getNumber(), room.getHotelId()};
-        } catch (DaoException | SQLException e) {
+            return room.getNumber();
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -49,14 +49,14 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public Room read(int number, int hotelId) throws DaoException {
+    public Room read(Integer ... identity) throws DaoException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         Room room = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ONE);
-            statement.setInt(1, number);
-            statement.setInt(2,hotelId);
+            statement = connection.prepareStatement(SQL_SELECT_ONE);
+            statement.setInt(1, identity[0]);
+            statement.setInt(2, identity[1]);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 if (resultSet.next()){
@@ -67,7 +67,7 @@ public class RoomDaoImpl implements RoomDao {
                     room.setTypeComfort(resultSet.getInt(4));
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -86,13 +86,13 @@ public class RoomDaoImpl implements RoomDao {
     public boolean update(Room room) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_UPDATE);
+            statement = connection.prepareStatement(SQL_UPDATE);
             statement.setInt(3,room.getNumber());
             statement.setInt(4,room.getHotelId());
             statement.setInt(1,room.getTypeAllocation());
             statement.setInt(2,room.getTypeComfort());
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -106,14 +106,14 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public boolean delete(int number, int hotelId) throws DaoException {
+    public boolean delete(Integer ... identity) throws DaoException {
         PreparedStatement statement = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_DELETE);
-            statement.setInt(1, number);
-            statement.setInt(2,hotelId);
+            statement = connection.prepareStatement(SQL_DELETE);
+            statement.setInt(1, identity[0]);
+            statement.setInt(2, identity[1]);
             return statement.executeUpdate() == 1;
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -127,12 +127,12 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public List<Room> readAllRooms() throws DaoException {
+    public List<Room> read() throws DaoException {
         List<Room> roomList = new ArrayList<>();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ALL);
+            statement = connection.prepareStatement(SQL_SELECT_ALL);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
                 while (resultSet.next()) {
@@ -144,7 +144,7 @@ public class RoomDaoImpl implements RoomDao {
                     roomList.add(room);
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
@@ -160,12 +160,17 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
+    public void setConnection(Connection connection) {
+        super.connection = connection;
+    }
+
+    @Override
     public List<Room> readAllRoomsByHotel(int hotelId) throws DaoException {
         List<Room> roomList = new ArrayList<>();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = ConnectionPool.getInstance().getConnection().prepareStatement(SQL_SELECT_ALL_BY_HOTEL);
+            statement = connection.prepareStatement(SQL_SELECT_ALL_BY_HOTEL);
             statement.setInt(1, hotelId);
             if (statement.execute()) {
                 resultSet = statement.getResultSet();
@@ -178,7 +183,7 @@ public class RoomDaoImpl implements RoomDao {
                     roomList.add(room);
                 }
             }
-        } catch (DaoException | SQLException e) {
+        } catch (SQLException e) {
             logger.debug(e);
             throw new DaoException(e);
         } finally {
