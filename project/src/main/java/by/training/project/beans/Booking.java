@@ -8,6 +8,7 @@ public class Booking extends Entity{
     private int hotelId;
     private Date dateArrival;
     private Date dateDepartment;
+    private int status;
 
     public int getNumber() {
         return getId();
@@ -41,18 +42,26 @@ public class Booking extends Entity{
         this.dateDepartment = dateDepartment;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Booking booking = (Booking) o;
-        return hotelId == booking.hotelId && dateArrival == booking.dateArrival && dateDepartment == booking.dateDepartment;
+        return hotelId == booking.hotelId && dateArrival == booking.dateArrival && dateDepartment == booking.dateDepartment && status == booking.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), hotelId, dateArrival, dateDepartment);
+        return Objects.hash(super.hashCode(), hotelId, dateArrival, dateDepartment,status);
     }
 
     @Override
@@ -61,6 +70,7 @@ public class Booking extends Entity{
                 "hotelId=" + hotelId +
                 ", dateArrival=" + dateArrival +
                 ", dateDepartment=" + dateDepartment +
+                ", status=" + status +
                 "} " + super.toString();
     }
 }

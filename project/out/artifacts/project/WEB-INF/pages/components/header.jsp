@@ -33,6 +33,8 @@
                                 <a class="dropdown-item"
                                    href="${pageContext.request.contextPath}/controller?command=SHOW_EDIT"><fmt:message key="user.edit"/></a>
                                 <a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/controller?command=SHOW_PERSONAL_AREA"><fmt:message key="user.personal-area"/></a>
+                                <a class="dropdown-item"
                                    href="${pageContext.request.contextPath}/controller?command=LOG_OUT"><fmt:message key="user.logout"/></a>
                             </div>
                         </div>

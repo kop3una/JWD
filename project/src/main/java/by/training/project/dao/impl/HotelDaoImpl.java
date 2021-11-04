@@ -31,7 +31,7 @@ public class HotelDaoImpl extends BaseDaoImpl implements HotelDao { // TODO thin
             statement.setInt(4,hotel.getFacilities().getTypeFood());
             statement.setInt(5,hotel.getFacilities().getTypeAllocation());
             statement.setInt(6,hotel.getFacilities().getTypeComfort());
-            statement.setString(7,hotel.getPrices().getPriceRoom());
+            statement.setString(7,hotel.getPrices().getPriceAllocation());
             statement.setString(8,hotel.getPrices().getPriceComfort());
             statement.setInt(9,hotel.getPrices().getRewardTourOperator());
             statement.setBoolean(10,hotel.getFacilities().isParking());
@@ -80,7 +80,7 @@ public class HotelDaoImpl extends BaseDaoImpl implements HotelDao { // TODO thin
                     hotel.getFacilities().setTypeFood(resultSet.getInt(5));
                     hotel.getFacilities().setTypeAllocation(resultSet.getInt(6));
                     hotel.getFacilities().setTypeComfort(resultSet.getInt(7));
-                    hotel.getPrices().setPriceRoom(resultSet.getString(8));
+                    hotel.getPrices().setPriceAllocation(resultSet.getString(8));
                     hotel.getPrices().setPriceComfort(resultSet.getString(9));
                     hotel.getPrices().setRewardTourOperator(resultSet.getInt(10));
                     hotel.getFacilities().setParking(resultSet.getBoolean(11));
@@ -120,7 +120,7 @@ public class HotelDaoImpl extends BaseDaoImpl implements HotelDao { // TODO thin
             statement.setInt(3,hotel.getFacilities().getTypeFood());
             statement.setInt(4,hotel.getFacilities().getTypeAllocation());
             statement.setInt(5,hotel.getFacilities().getTypeComfort());
-            statement.setString(6,hotel.getPrices().getPriceRoom());
+            statement.setString(6,hotel.getPrices().getPriceAllocation());
             statement.setString(7,hotel.getPrices().getPriceComfort());
             statement.setInt(8,hotel.getPrices().getRewardTourOperator());
             statement.setBoolean(9,hotel.getFacilities().isParking());
@@ -184,7 +184,7 @@ public class HotelDaoImpl extends BaseDaoImpl implements HotelDao { // TODO thin
                     hotel.getFacilities().setTypeFood(resultSet.getInt(5));
                     hotel.getFacilities().setTypeAllocation(resultSet.getInt(6));
                     hotel.getFacilities().setTypeComfort(resultSet.getInt(7));
-                    hotel.getPrices().setPriceRoom(resultSet.getString(8));
+                    hotel.getPrices().setPriceAllocation(resultSet.getString(8));
                     hotel.getPrices().setPriceComfort(resultSet.getString(9));
                     hotel.getPrices().setRewardTourOperator(resultSet.getInt(10));
                     hotel.getFacilities().setParking(resultSet.getBoolean(11));
@@ -234,7 +234,7 @@ public class HotelDaoImpl extends BaseDaoImpl implements HotelDao { // TODO thin
                     hotel.getFacilities().setTypeFood(resultSet.getInt(5));
                     hotel.getFacilities().setTypeAllocation(resultSet.getInt(6));
                     hotel.getFacilities().setTypeComfort(resultSet.getInt(7));
-                    hotel.getPrices().setPriceRoom(resultSet.getString(8));
+                    hotel.getPrices().setPriceAllocation(resultSet.getString(8));
                     hotel.getPrices().setPriceComfort(resultSet.getString(9));
                     hotel.getPrices().setRewardTourOperator(resultSet.getInt(10));
                     hotel.getFacilities().setParking(resultSet.getBoolean(11));

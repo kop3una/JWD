@@ -2,10 +2,13 @@ package by.training.project.service.user.impl;
 
 import by.training.project.beans.*;
 import by.training.project.controller.command.SessionAttribute;
-import by.training.project.dao.Transaction;
-import by.training.project.dao.TransactionCreator;
+import by.training.project.dao.*;
 import by.training.project.dao.exception.DaoException;
 import by.training.project.service.ServiceFactory;
+import by.training.project.service.creator.reader.BookingReader;
+import by.training.project.service.creator.reader.OrderReader;
+import by.training.project.service.creator.writer.BookingWriter;
+import by.training.project.service.creator.writer.OrderWriter;
 import by.training.project.service.creator.writer.UserWriter;
 import by.training.project.service.exception.ServiceException;
 import by.training.project.service.hashing.HashingService;
@@ -17,6 +20,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private final Logger logger = LogManager.getLogger(UserServiceImpl.class);
@@ -73,9 +78,9 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
-        if (user == null || !email.equals(mailService.getEmail())) {
+        if (user == null && !email.equals(mailService.getEmail())) {
             if (mailService.sendApprovalRegistration(email, sha256.hashing(password), role.toString(), locale)) {
-                session.setAttribute(SessionAttribute.HASH_LINK, mailService.getLinkHash());
+                session.setAttribute(SessionAttribute.HASH_LINK, mailService.getLinkRegistrationHash());
                 return true;
             } else {
                 return false;
@@ -153,8 +158,150 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean booking(Booking booking) {
-        return false;
+    public boolean booking(Integer userId, Integer hotelId, Integer roomId, Date dateArrival, Date dateDepartment, String locale) {
+        if (userId != null && hotelId != null && roomId != null && dateArrival != null && dateDepartment != null){
+            Order order = new Order();
+            order.setUserId(userId);
+            order.setHotelId(hotelId);
+            order.setNumber(roomId);
+            order.setDateArrival(dateArrival);
+            order.setDateDepartment(dateDepartment);
+            order.setStatus(EntityConstant.ORDER_WAITING);
+
+            Booking booking = new Booking();
+            booking.setNumber(roomId);
+            booking.setHotelId(hotelId);
+            booking.setDateArrival(dateArrival);
+            booking.setDateDepartment(dateDepartment);
+            booking.setStatus(EntityConstant.BOOKING_WAITING);
+
+            OrderWriter orderWriter = CreatorFactory.getInstance().getOrderWriter();
+            BookingWriter bookingWriter = CreatorFactory.getInstance().getBookingWriter();
+            UserReader userReader = CreatorFactory.getInstance().getUserReader();
+
+            try {
+                transaction = createTransaction();
+                User user = userReader.read(userId,transaction);
+                if (orderWriter.booking(order,transaction) && bookingWriter.booking(booking, transaction)
+                        && sendMailForBooking(user.getEmail(), userId, user.getRole().name(), order.getId(), locale)){
+                    transaction.commit();
+                    return true;
+                } else {
+                    transaction.rollback();
+                    return false;
+                }
+            } catch (ServiceException e) {
+                try {
+                    transaction.rollback();
+                } catch (DaoException ex) {
+                    logger.error("Error with rollback", e);
+                    return false;
+                }
+                return false;
+            } catch (DaoException e) {
+                logger.error("Error with commit", e);
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean approvalBooking(Integer userId, Integer orderId, Integer status) {
+        boolean result = false;
+        if (userId != null && orderId != null && status != null){
+            OrderReader orderReader = CreatorFactory.getInstance().getOrderReader();
+            BookingReader bookingReader = CreatorFactory.getInstance().getBookingReader();
+            OrderWriter orderWriter = CreatorFactory.getInstance().getOrderWriter();
+            BookingWriter bookingWriter = CreatorFactory.getInstance().getBookingWriter();
+
+            try {
+                transaction = createTransaction();
+                Order order = orderReader.read(orderId,transaction);
+                Booking booking = bookingReader.read(order.getNumber(),order.getHotelId(),transaction);
+                if (status == EntityConstant.ORDER_ACCEPT){
+                    order.setStatus(EntityConstant.ORDER_ACCEPT);
+                    booking.setStatus(EntityConstant.BOOKING_ACCEPT);
+                    result = orderWriter.update(order,transaction) && bookingWriter.update(booking,transaction);
+                } else if (status == EntityConstant.ORDER_CANCEL) {
+                    order.setStatus(EntityConstant.ORDER_CANCEL);
+                    result = orderWriter.update(order,transaction) && bookingWriter.delete(booking,transaction);
+                }
+                if (result){
+                    transaction.commit();
+                } else {
+                    transaction.rollback();
+                }
+                return result;
+            } catch (ServiceException e) {
+                try {
+                    transaction.rollback();
+                } catch (DaoException ex) {
+                    logger.error("Error with rollback", e);
+                    return false;
+                }
+                return false;
+            } catch (DaoException e) {
+                logger.error("Error with commit", e);
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public List<Order> readAllOrder(Integer userId) throws ServiceException {
+        OrderReader orderReader = CreatorFactory.getInstance().getOrderReader();
+        List<Order> orderList;
+        try {
+            transaction = createTransaction();
+            orderList = orderReader.readAllOrderByUserId(userId,transaction);
+            transaction.commit();
+        } catch (ServiceException e) {
+            try {
+                transaction.rollback();
+            } catch (DaoException ex) {
+                logger.error("Error with rollback", e);
+                throw new ServiceException("Error with rollback");
+            }
+            logger.error("Error read from DB", e);
+            throw new ServiceException("Error read from DB" + e);
+        } catch (DaoException e) {
+            logger.error("Error with commit", e);
+            throw new ServiceException("Error with commit");
+        }
+        return orderList;
+    }
+
+    @Override
+    public List<Order> readOrder(Integer userId, Integer page, Integer countPage) throws ServiceException {
+        OrderReader orderReader = CreatorFactory.getInstance().getOrderReader();
+        List<Order> orderList;
+        try {
+            transaction = createTransaction();
+            orderList = orderReader.readOrderByUserId(userId,page, countPage,transaction);
+            transaction.commit();
+        } catch (ServiceException e) {
+            try {
+                transaction.rollback();
+            } catch (DaoException ex) {
+                logger.error("Error with rollback", e);
+                throw new ServiceException("Error with rollback");
+            }
+            logger.error("Error read from DB", e);
+            throw new ServiceException("Error read from DB" + e);
+        } catch (DaoException e) {
+            logger.error("Error with commit", e);
+            throw new ServiceException("Error with commit");
+        }
+        return orderList;
+    }
+
+    private boolean sendMailForBooking(String email, Integer userId, String role, Integer orderId, String locale) {
+        MailService mailService = ServiceFactory.getInstance().getMailService();
+        return mailService.sendApprovalBooking(email, userId, role, orderId, locale);
     }
 
     private Transaction createTransaction() throws ServiceException {

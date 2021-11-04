@@ -11,6 +11,9 @@ public final class ErrorKey {
     public static final String ERROR_DONT_DELETE = "error.delete";
     public static final String ERROR_EDIT_PASSWORD = "error.edit-password";
     public static final String INVALID_ROLE_BOOKING = "error.invalid-role-booking";
+    public static final String ERROR_SEARCH_BOOKING = "error.search-booking";
+    public static final String ERROR_BOOKING = "error.booking";
+    public static final String ERROR_APPROVAL_BOOKING = "error.approval-booking";
 
     private ErrorKey(){};
 }

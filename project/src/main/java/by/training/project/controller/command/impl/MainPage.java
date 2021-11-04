@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class MainPage implements Command {
-    private final static String COUNT_ON_PAGE = "paginationCountHotelOnPage";
+    private final static String COUNT_ON_PAGE = "paginationCountEntityOnPage";
 
     @Override
     public Rout execute(HttpServletRequest request, HttpServletResponse response){
-        Optional<String> pageParam = Optional.ofNullable((String) request.getSession().getAttribute(SessionAttribute.PAGE));
+        Optional<String> pageParam = Optional.ofNullable((String) request.getSession().getAttribute(SessionAttribute.PAGE_MAIN));
         if (pageParam.isEmpty()){
             request.getSession().setAttribute(SessionAttribute.ERROR, ErrorKey.ERROR_404);
             return new Rout(PagePath.ERROR_PAGE_REDIRECT, RoutingType.REDIRECT);
@@ -30,11 +30,10 @@ public class MainPage implements Command {
         try {
             List<Hotel> hotelListAll = hotelService.readAll();
             List<Hotel> hotelList = hotelService.read(page, hotelOnPage);
-            request.setAttribute("hotelList", hotelList);
-            request.setAttribute("hotelOnPage", hotelOnPage);
-            request.setAttribute("page", page);
-            request.setAttribute("countHotels", hotelListAll.size());
-            request.setAttribute("countPage",(int) Math.ceil(hotelListAll.size()/(double)hotelOnPage));
+            request.setAttribute(RequestParameter.ENTITY_LIST, hotelList);
+            request.setAttribute(RequestParameter.CURRENT_PAGE, page);
+            request.setAttribute(RequestParameter.COUNT_ALL_ENTITIES, hotelListAll.size());
+            request.setAttribute(RequestParameter.COUNT_PAGE,(int) Math.ceil(hotelListAll.size()/(double)hotelOnPage));
         } catch (ServiceException e) {
             request.getSession().setAttribute(SessionAttribute.ERROR, ErrorKey.ERROR_500);
             return new Rout(PagePath.ERROR_PAGE_REDIRECT, RoutingType.REDIRECT);

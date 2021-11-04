@@ -25,6 +25,14 @@ public class CommandProvider {
         repository.put(CommandName.SHOW_SUCCESS_PASSWORD_PAGE, new ShowSuccessEditPassword());
         repository.put(CommandName.SHOW_BOOKING, new ShowBooking());
         repository.put(CommandName.CONTINUE_BOOKING, new ContinueBooking());
+        repository.put(CommandName.SHOW_ROOMS, new ShowRooms());
+        repository.put(CommandName.END_BOOKING, new EndBooking());
+        repository.put(CommandName.WAIT_APPROVAL_BOOKING, new WaitApprovalBooking());
+        repository.put(CommandName.SUCCESS_APPROVAL_BOOKING,new ShowSuccessApprovalBooking());
+        repository.put(CommandName.APPROVAL_BOOKING, new ApprovalBooking());
+        repository.put(CommandName.SHOW_PERSONAL_AREA, new ShowPersonalArea());
+        repository.put(CommandName.SHOW_ADD_HOTEL, new ShowAddHotel());
+        repository.put(CommandName.ADD_HOTEL, new AddHotel());
     }
 
     public Command getCommand(String name) {

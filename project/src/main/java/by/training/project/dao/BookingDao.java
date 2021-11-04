@@ -1,7 +1,6 @@
 package by.training.project.dao;
 
 import by.training.project.beans.Booking;
-import by.training.project.beans.Room;
 import by.training.project.dao.exception.DaoException;
 
 import java.util.List;
@@ -22,5 +21,5 @@ public interface BookingDao extends Dao<Booking> {
     @Override
     List<Booking> read() throws DaoException;
 
-    List<Booking> readAllRoomsByHotel (int hotelId) throws DaoException;
+    List<Booking> readAllBookingByHotel (int hotelId) throws DaoException;
 }

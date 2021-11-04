@@ -6,18 +6,18 @@ import java.util.Objects;
 
 public class Hotel extends Entity {
 
-    private Facilities facilities;
-    private Prices prices;
-    private Address address;
+    private final Facilities facilities;
+    private final Prices prices;
+    private final Address address;
     private int adminId;
     private String name;
     private int stars;
 
     public class Facilities {
+
         private int typeFood;
         private int typeAllocation;
         private int typeComfort;
-        private int typeRoom;
         private boolean parking;
         private boolean wifi;
         private boolean pets;
@@ -34,12 +34,20 @@ public class Hotel extends Entity {
             this.typeFood = typeFood;
         }
 
+        public String getStrValTypeFood(){
+            return  makeStrTypeFood();
+        }
+
         public int getTypeAllocation() {
             return typeAllocation;
         }
 
         public void setTypeAllocation(int typeAllocation) {
             this.typeAllocation = typeAllocation;
+        }
+
+        public String getStrValTypeAllocation(){
+            return makeStrTypeAllocation();
         }
 
         public int getTypeComfort() {
@@ -50,12 +58,8 @@ public class Hotel extends Entity {
             this.typeComfort = typeComfort;
         }
 
-        public int getTypeRoom() {
-            return typeRoom;
-        }
-
-        public void setTypeRoom(int typeRoom) {
-            this.typeRoom = typeRoom;
+        public String getStrValTypeComfort(){
+            return makeStrTypeComfort();
         }
 
         public boolean isParking() {
@@ -86,8 +90,86 @@ public class Hotel extends Entity {
             return business;
         }
 
+        public String getStrValAddFacilities(){
+            return makeStrAddFacilities();
+        }
+
         public void setBusiness(boolean business) {
             this.business = business;
+        }
+
+        private String makeStrTypeComfort(){
+            StringBuffer typeComfortStr = new StringBuffer();
+            if ((typeComfort & EntityConstant.TYPE_ALLOCATION_STANDARD) != 0){
+                typeComfortStr.append("standard ");
+            }
+            if ((typeComfort & EntityConstant.TYPE_ALLOCATION_FAMILY) != 0){
+                typeComfortStr.append("family ");
+            }
+            if ((typeComfort & EntityConstant.TYPE_ALLOCATION_LUXE) !=0){
+                typeComfortStr.append("luxe ");
+            }
+            if ((typeComfort & EntityConstant.TYPE_ALLOCATION_SUITE) !=0){
+                typeComfortStr.append("suite ");
+            }
+            return typeComfortStr.toString();
+        }
+
+        private String makeStrTypeFood(){
+            StringBuffer typeFoodStr = new StringBuffer();
+            if ((typeFood & EntityConstant.HOTEL_NO) != 0){
+                typeFoodStr.append("no ");
+            }
+            if ((typeFood & EntityConstant.HOTEL_BREAKFAST) != 0){
+                typeFoodStr.append("breakfast ");
+            }
+            if ((typeFood & EntityConstant.HOTEL_HALF_BOARD) !=0){
+                typeFoodStr.append("half board ");
+            }
+            if ((typeFood & EntityConstant.HOTEL_FULL_BOARD) !=0){
+                typeFoodStr.append("full board ");
+            }
+            if ((typeFood & EntityConstant.HOTEL_ALL_INCLUSIVE) !=0){
+                typeFoodStr.append("all inclusive ");
+            }
+            return typeFoodStr.toString();
+        }
+
+        private String makeStrTypeAllocation(){
+            StringBuffer typeAllocationStr = new StringBuffer();
+            if ((typeAllocation & EntityConstant.HOTEL_SINGLE) != 0){
+                typeAllocationStr.append("single ");
+            }
+            if ((typeAllocation & EntityConstant.HOTEL_DOUBLE) != 0){
+                typeAllocationStr.append("double ");
+            }
+            if ((typeAllocation & EntityConstant.HOTEL_TRIPLE) !=0){
+                typeAllocationStr.append("triple ");
+            }
+            if ((typeAllocation & EntityConstant.HOTEL_EXTRA) !=0){
+                typeAllocationStr.append("extra ");
+            }
+            if ((typeAllocation & EntityConstant.HOTEL_CHILD) !=0){
+                typeAllocationStr.append("child ");
+            }
+            return typeAllocationStr.toString();
+        }
+
+        private String makeStrAddFacilities(){
+            StringBuffer addFacilitiesStr = new StringBuffer();
+            if (parking){
+                addFacilitiesStr.append("parking ");
+            }
+            if (wifi){
+                addFacilitiesStr.append("wifi ");
+            }
+            if (pets){
+                addFacilitiesStr.append("pets ");
+            }
+            if (business){
+                addFacilitiesStr.append("business ");
+            }
+            return addFacilitiesStr.toString();
         }
 
         @Override
@@ -95,12 +177,12 @@ public class Hotel extends Entity {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Facilities that = (Facilities) o;
-            return typeFood == that.typeFood && typeAllocation == that.typeAllocation && typeComfort == that.typeComfort && typeRoom == that.typeRoom && parking == that.parking && wifi == that.wifi && pets == that.pets && business == that.business;
+            return typeFood == that.typeFood && typeAllocation == that.typeAllocation && typeComfort == that.typeComfort && parking == that.parking && wifi == that.wifi && pets == that.pets && business == that.business;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(typeFood, typeAllocation, typeComfort, typeRoom, parking, wifi, pets, business);
+            return Objects.hash(typeFood, typeAllocation, typeComfort, parking, wifi, pets, business);
         }
 
         @Override
@@ -109,7 +191,6 @@ public class Hotel extends Entity {
                     "typeFood=" + typeFood +
                     ", typeAllocation=" + typeAllocation +
                     ", typeComfort=" + typeComfort +
-                    ", typeRoom=" + typeRoom +
                     ", parking=" + parking +
                     ", wifi=" + wifi +
                     ", pets=" + pets +
@@ -119,27 +200,27 @@ public class Hotel extends Entity {
     }
 
     public class Prices {
-        private int[] priceRoom = new int[5];
+        private int[] priceAllocation = new int[5];
         private int[] priceComfort = new int[4];
         private int rewardTourOperator;
 
         private Prices() {
         }
 
-        public int[] getPriceRoomIntArr() {
-            return priceRoom;
+        public int[] getPriceAllocationIntArr() {
+            return priceAllocation;
         }
 
-        public void setPriceRoomIntArr(int[] priceRoom) {
-            this.priceRoom = priceRoom;
+        public void setPriceAllocationIntArr(int[] priceRoom) {
+            this.priceAllocation = priceRoom;
         }
 
-        public String getPriceRoom() {
-            return priceRoomToStringValue(this.priceRoom);
+        public String getPriceAllocation() {
+            return priceRoomToStringValue(this.priceAllocation);
         }
 
-        public void setPriceRoom(String priceRoom) {
-            this.priceRoom = priceRoomToIntArr(priceRoom);
+        public void setPriceAllocation(String priceRoom) {
+            this.priceAllocation = priceRoomToIntArr(priceRoom);
         }
 
         public int[] getPriceComfortIntArr() {
@@ -156,6 +237,10 @@ public class Hotel extends Entity {
 
         public void setPriceComfort(String priceComfort) {
             this.priceComfort = priceComfortToIntArr(priceComfort);
+        }
+
+        public String getStandartPrice() {
+            return String.valueOf(priceAllocation[0]);
         }
 
         public int getRewardTourOperator() {
@@ -215,13 +300,13 @@ public class Hotel extends Entity {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Prices prices = (Prices) o;
-            return rewardTourOperator == prices.rewardTourOperator && Arrays.equals(priceRoom, prices.priceRoom) && Arrays.equals(priceComfort, prices.priceComfort);
+            return rewardTourOperator == prices.rewardTourOperator && Arrays.equals(priceAllocation, prices.priceAllocation) && Arrays.equals(priceComfort, prices.priceComfort);
         }
 
         @Override
         public int hashCode() {
             int result = Objects.hash(rewardTourOperator);
-            result = 31 * result + Arrays.hashCode(priceRoom);
+            result = 31 * result + Arrays.hashCode(priceAllocation);
             result = 31 * result + Arrays.hashCode(priceComfort);
             return result;
         }
@@ -229,7 +314,7 @@ public class Hotel extends Entity {
         @Override
         public String toString() {
             return "Prices{" +
-                    "priceRoom=" + Arrays.toString(priceRoom) +
+                    "priceRoom=" + Arrays.toString(priceAllocation) +
                     ", priceComfort=" + Arrays.toString(priceComfort) +
                     ", rewardTourOperator=" + rewardTourOperator +
                     '}';
@@ -293,6 +378,10 @@ public class Hotel extends Entity {
 
         public void setBuilding(int building) {
             this.building = building;
+        }
+
+        public String getFullAddress(){
+            return countryName+" "+city+" "+street+" "+house+ (building == 0 ? "" : "/"+building);
         }
 
         @Override

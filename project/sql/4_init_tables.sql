@@ -242,7 +242,7 @@ VALUES ('ABW', 'Aruba'),
        ('ZWE', 'Zimbabwe');
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`)
-VALUES (1, 'admin@gmail.com', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918', 0);
+VALUES (1, 'kirillalbert54@gmail.com', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918', 0);
 
 INSERT INTO `users_info`(`user_id`, `name`, `surname`, `middle_name`, `phone`, `passport`, `date_of_birthday`, `sex`,
                          `code_country`)

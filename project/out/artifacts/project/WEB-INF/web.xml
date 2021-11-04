@@ -16,7 +16,17 @@
     </context-param>
 
     <context-param>
-        <param-name>paginationCountHotelOnPage</param-name>
+        <param-name>ADMINISTRATOR</param-name>
+        <param-value>0</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>TOUROPERATOR</param-name>
+        <param-value>2</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>paginationCountEntityOnPage</param-name>
         <param-value>2</param-value>
     </context-param>
 

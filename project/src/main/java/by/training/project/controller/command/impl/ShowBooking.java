@@ -1,5 +1,6 @@
 package by.training.project.controller.command.impl;
 
+import by.training.project.beans.Role;
 import by.training.project.controller.command.*;
 import by.training.project.controller.command.rout.Rout;
 import by.training.project.controller.command.rout.RoutingType;
@@ -13,7 +14,10 @@ public class ShowBooking implements Command {
     @Override
     public Rout execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        Optional<String> role = Optional.ofNullable((String) session.getAttribute(SessionAttribute.ROLE));
+        session.removeAttribute(SessionAttribute.PAGE_MAIN);
+        session.removeAttribute(SessionAttribute.PAGE_ROOMS);
+        session.removeAttribute(SessionAttribute.PAGE_PERSONAL_AREA);
+        Optional<Role> role = Optional.ofNullable((Role) session.getAttribute(SessionAttribute.ROLE));
         if (role.isEmpty()){
             request.getSession().setAttribute(SessionAttribute.ERROR, ErrorKey.INVALID_ROLE_BOOKING);
             return new Rout(PagePath.ERROR_PAGE_REDIRECT, RoutingType.REDIRECT);

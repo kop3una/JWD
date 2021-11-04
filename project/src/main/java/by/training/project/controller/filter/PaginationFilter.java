@@ -20,17 +20,42 @@ public class PaginationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-        if (session.getAttribute(SessionAttribute.PAGE) == null || request.getSession().getAttribute(SessionAttribute.PAGE).equals("")) {
-            session.setAttribute(SessionAttribute.PAGE, request.getServletContext().getInitParameter(DEFAULT_PAGE));
+        if (session.getAttribute(SessionAttribute.PAGE_MAIN) == null || request.getSession().getAttribute(SessionAttribute.PAGE_MAIN).equals("")) {
+            session.setAttribute(SessionAttribute.PAGE_MAIN, request.getServletContext().getInitParameter(DEFAULT_PAGE));
         }
 
-        Optional<String> requestedPage = Optional.ofNullable(request.getParameter(RequestParameter.PAGE_PAGINATION));
-        if (requestedPage.isPresent()) {
-            session.setAttribute(SessionAttribute.PAGE, requestedPage.get());
+        if (session.getAttribute(SessionAttribute.PAGE_ROOMS) == null || request.getSession().getAttribute(SessionAttribute.PAGE_ROOMS).equals("")) {
+            session.setAttribute(SessionAttribute.PAGE_ROOMS, request.getServletContext().getInitParameter(DEFAULT_PAGE));
+        }
+
+        if (session.getAttribute(SessionAttribute.PAGE_PERSONAL_AREA) == null || request.getSession().getAttribute(SessionAttribute.PAGE_PERSONAL_AREA).equals("")) {
+            session.setAttribute(SessionAttribute.PAGE_PERSONAL_AREA, request.getServletContext().getInitParameter(DEFAULT_PAGE));
+        }
+
+        Optional<String> requestedPageMain = Optional.ofNullable(request.getParameter(RequestParameter.PAGE_MAIN_PAGINATION));
+        if (requestedPageMain.isPresent()) {
+            session.setAttribute(SessionAttribute.PAGE_MAIN, requestedPageMain.get());
             String requestString = removeLocaleParameter(request);
             response.sendRedirect(requestString);
             return;
         }
+
+        Optional<String> requestedPageRooms = Optional.ofNullable(request.getParameter(RequestParameter.PAGE_ROOMS_PAGINATION));
+        if (requestedPageRooms.isPresent()) {
+            session.setAttribute(SessionAttribute.PAGE_ROOMS, requestedPageRooms.get());
+            String requestString = removeLocaleParameter(request);
+            response.sendRedirect(requestString);
+            return;
+        }
+
+        Optional<String> requestedPagePersonalArea = Optional.ofNullable(request.getParameter(RequestParameter.PAGE_PERSONAL_AREA_PAGINATION));
+        if (requestedPagePersonalArea.isPresent()) {
+            session.setAttribute(SessionAttribute.PAGE_PERSONAL_AREA, requestedPagePersonalArea.get());
+            String requestString = removeLocaleParameter(request);
+            response.sendRedirect(requestString);
+            return;
+        }
+
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
@@ -38,7 +63,9 @@ public class PaginationFilter implements Filter {
         Map<String, String[]> parameterMap = request.getParameterMap();
         StringBuilder requestString = new StringBuilder(request.getContextPath() + "/controller?");
         for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
-            if (!entry.getKey().equals(RequestParameter.PAGE_PAGINATION)){
+            if (!entry.getKey().equals(RequestParameter.PAGE_MAIN_PAGINATION) &&
+                    !entry.getKey().equals(RequestParameter.PAGE_ROOMS_PAGINATION) &&
+                    !entry.getKey().equals(RequestParameter.PAGE_PERSONAL_AREA_PAGINATION)){
                 requestString.append(entry.getKey()).append("=").append(entry.getValue()[0]).append("&");
             }
         }

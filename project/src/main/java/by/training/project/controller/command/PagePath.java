@@ -30,5 +30,20 @@ public final class PagePath {
     public static final String SHOW_BOOKING = "WEB-INF/pages/booking.jsp";
     public static final String SHOW_BOOKING_REDIRECT = "/controller?command=SHOW_BOOKING";
 
+    public static final String SHOW_ROOMS = "WEB-INF/pages/showrooms.jsp";
+    public static final String SHOW_ROOMS_REDIRECT = "/controller?command=SHOW_ROOMS";
+
+    public static final String WAIT_APPROVAL_BOOKING = "WEB-INF/pages/waitapprovalbooking.jsp";
+    public static final String WAIT_APPROVAL_BOOKING_REDIRECT = "/controller?command=WAIT_APPROVAL_BOOKING";
+
+    public static final String SUCCESS_APPROVAL_BOOKING = "WEB-INF/pages/successaprovalbooking.jsp";
+    public static final String SUCCESS_APPROVAL_BOOKING_REDIRECT = "/controller?command=SUCCESS_APPROVAL_BOOKING";
+
+    public static final String SHOW_PERSONAL_AREA = "WEB-INF/pages/personalarea.jsp";
+    public static final String SHOW_PERSONAL_AREA_REDIRECT = "/controller?command=SHOW_PERSONAL_AREA";
+
+    public static final String SHOW_ADD_HOTEL = "WEB-INF/pages/addhotel.jsp";
+    public static final String SHOW_ADD_HOTEL_REDIRECT = "/controller?command=SHOW_ADD_HOTEL";
+
     private PagePath(){};
 }

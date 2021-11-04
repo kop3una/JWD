@@ -11,6 +11,8 @@ public final class DaoFactory {
     private final HotelDao hotelDaoImpl = new HotelDaoImpl();
     private final CountriesDao countriesDaoImpl = new CountriesDaoImpl();
     private final RoomDao roomDaoImpl = new RoomDaoImpl();
+    private final BookingDao bookingDaoImpl = new BookingDaoImpl();
+    private final OrderDao orderDaoImpl = new OrderDaoImpl();
 
     private DaoFactory() {}
     public static DaoFactory getInstance(){
@@ -21,7 +23,10 @@ public final class DaoFactory {
     }
     public <T extends Dao<? extends Entity>> T getUserInfoDao() { return (T)userInfoDaoImpl; }
     public <T extends Dao<? extends Entity>> T getTourOrganizationInfoDao() {return (T)tourOrganizationInfoDaoImpl; }
-    public HotelDao getHotelDao() { return hotelDaoImpl; }
+    public <T extends Dao<? extends Entity>> T getHotelDao() { return (T)hotelDaoImpl; }
+    public <T extends Dao<? extends Entity>> T getRoomDao() {  return (T)roomDaoImpl; }
+    public <T extends Dao<? extends Entity>> T getBookingDao() {  return (T) bookingDaoImpl; }
+    public <T extends Dao<? extends Entity>> T getOrderDao() { return (T) orderDaoImpl; }
     public CountriesDao getCountriesDao() { return countriesDaoImpl; }
-    public RoomDao getRoomDao() { return roomDaoImpl; }
+
 }

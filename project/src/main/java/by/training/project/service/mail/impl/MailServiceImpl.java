@@ -1,5 +1,6 @@
 package by.training.project.service.mail.impl;
 
+import by.training.project.beans.EntityConstant;
 import by.training.project.controller.command.CommandName;
 import by.training.project.controller.command.RequestParameter;
 import by.training.project.service.exception.ServiceException;
@@ -25,14 +26,17 @@ public class MailServiceImpl implements MailService {
     private final Properties mailProperties = loadMailProperties();
     private static final String MAIL_USER_NAME = "mail.user.name";
     private static final String MAIL_MESSAGE_BUNDLE = "mailcontent";
-    private static final String APPROVAL_REGISTRATION = "approval-registration";
-    private static final String SUBJECT="subject";
+    private static final String APPROVAL_REGISTRATION = "approval-registration-content";
+    private static final String SUBJECT_REGISTRATION = "subject-registration";
+    private static final String APPROVAL_BOOKING_ACCEPT = "approval-booking-accept-content";
+    private static final String APPROVAL_BOOKING_CANCEL = "approval-booking-cancel-content";
+    private static final String SUBJECT_BOOKING = "subject-booking";
     private static final String MESSAGE_CONTENT_TYPE = "text/plain; charset=UTF-8";
     private static final String URL="url";
     private static final String START_PARAM="?";
     private static final String NEXT_PARAM="&";
     private ResourceBundle mailBundle;
-    private String link ="";
+    private String linkRegistration ="";
 
     @Override
     public String getEmail() {
@@ -44,8 +48,8 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public int getLinkHash() {
-        return this.link.hashCode();
+    public int getLinkRegistrationHash() {
+        return this.linkRegistration.hashCode();
     }
 
     @Override
@@ -54,9 +58,27 @@ public class MailServiceImpl implements MailService {
             try {
             MimeMessage message = createMessage(mailProperties);
             mailBundle = getResourceBundle(locale);
-            String content = createContent(email, password, role);
-            String subject = mailBundle.getString(SUBJECT);
+            String content = createContentRegistration(email, password, role);
+            String subject = mailBundle.getString(SUBJECT_REGISTRATION);
             sendMessage(message, subject, content, email);
+            } catch (ServiceException e){
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean sendApprovalBooking(String email, Integer userId, String role, Integer orderId, String locale) {
+        if (!mailProperties.isEmpty()){
+            try {
+                MimeMessage message = createMessage(mailProperties);
+                mailBundle = getResourceBundle(locale);
+                String content = createContentBooking(String.valueOf(userId),String.valueOf(orderId),role);
+                String subject = mailBundle.getString(SUBJECT_BOOKING);
+                sendMessage(message, subject, content, email);
             } catch (ServiceException e){
                 return false;
             }
@@ -106,20 +128,55 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-    private String createContent(String email, String password, String role) throws ServiceException {
-        return mailBundle.getString(APPROVAL_REGISTRATION)+" "+createLink(email,password,role);
+    private String createContentRegistration(String email, String password, String role) throws ServiceException {
+        return mailBundle.getString(APPROVAL_REGISTRATION)+" "+ createLinkRegistration(email,password,role);
     }
 
-    private String createLink(String email, String password, String role) throws ServiceException {
+    private String createContentBooking(String userId, String orderId, String role) throws ServiceException{
+        return mailBundle.getString(APPROVAL_BOOKING_ACCEPT)+" "+createLinkBookingAccept(userId,orderId,role) + "\n" +
+                mailBundle.getString(APPROVAL_BOOKING_CANCEL)+" "+createLinkBookingCancel(userId,orderId,role);
+    }
+
+    private String createLinkRegistration(String email, String password, String role) throws ServiceException {
         try {
             InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
             Properties config = new Properties();
             config.load(input);
-            this.link = config.getProperty(URL)+START_PARAM+RequestParameter.COMMAND+"="+ CommandName.SHOW_CONTINUE_SIGN_UP+
+            this.linkRegistration = config.getProperty(URL)+START_PARAM+RequestParameter.COMMAND+"="+ CommandName.SHOW_CONTINUE_SIGN_UP+
                     NEXT_PARAM+RequestParameter.EMAIL+"="+email+
                     NEXT_PARAM+RequestParameter.PASSWORD+"="+password+
                     NEXT_PARAM+RequestParameter.ROLE+"="+role;
-            return this.link;
+            return this.linkRegistration;
+        } catch (IOException e){
+            throw new ServiceException(e);
+        }
+    }
+
+    private String createLinkBookingAccept(String userId, String orderId, String role) throws ServiceException {
+        try {
+            InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
+            Properties config = new Properties();
+            config.load(input);
+            return config.getProperty(URL)+START_PARAM+RequestParameter.COMMAND+"="+ CommandName.APPROVAL_BOOKING+
+                    NEXT_PARAM+RequestParameter.USER_ID+"="+userId+
+                    NEXT_PARAM+RequestParameter.ORDER_ID+"="+orderId+
+                    NEXT_PARAM+RequestParameter.ROLE+"="+role +
+                    NEXT_PARAM+RequestParameter.STATUS+"="+ EntityConstant.ORDER_ACCEPT;
+        } catch (IOException e){
+            throw new ServiceException(e);
+        }
+    }
+
+    private String createLinkBookingCancel(String userId, String orderId, String role) throws ServiceException {
+        try {
+            InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
+            Properties config = new Properties();
+            config.load(input);
+            return config.getProperty(URL)+START_PARAM+RequestParameter.COMMAND+"="+ CommandName.APPROVAL_BOOKING+
+                    NEXT_PARAM+RequestParameter.USER_ID+"="+userId+
+                    NEXT_PARAM+RequestParameter.ORDER_ID+"="+orderId+
+                    NEXT_PARAM+RequestParameter.ROLE+"="+role +
+                    NEXT_PARAM+RequestParameter.STATUS+"="+ EntityConstant.ORDER_CANCEL;
         } catch (IOException e){
             throw new ServiceException(e);
         }

@@ -1,11 +1,9 @@
 package by.training.project.service.creator.reader.impl;
 
+import by.training.project.beans.Booking;
 import by.training.project.beans.Hotel;
 import by.training.project.beans.Room;
-import by.training.project.dao.DaoFactory;
-import by.training.project.dao.HotelDao;
-import by.training.project.dao.RoomDao;
-import by.training.project.dao.Transaction;
+import by.training.project.dao.*;
 import by.training.project.dao.exception.DaoException;
 import by.training.project.service.creator.reader.BookingReader;
 import by.training.project.service.exception.ServiceException;
@@ -18,20 +16,26 @@ public class BookingReaderImpl implements BookingReader {
     private final Logger logger = LogManager.getLogger(BookingReaderImpl.class);
 
     @Override
-    public List<Room> readAllByHotel(Integer hotelId, Transaction transaction) throws ServiceException {
-        HotelDao hotelDao = transaction.createDao(DaoFactory.getInstance().getHotelDao());
-        RoomDao roomDao = transaction.createDao(DaoFactory.getInstance().getRoomDao());
-        List<Hotel> hotelList;
+    public List<Booking> readAllByHotel(Integer hotelId, Transaction transaction) throws ServiceException {
+        BookingDao bookingDao = transaction.createDao(DaoFactory.getInstance().getBookingDao());
         try {
-            hotelList = hotelDao.read();
-            for (Hotel hotel : hotelList){
-                List<Room> roomList = roomDao.readAllRoomsByHotel(hotel.getId());
-                hotel.setListRoom(roomList);
-            }
+            return bookingDao.readAllBookingByHotel(hotelId);
         } catch (DaoException e) {
             logger.debug(e);
             throw new ServiceException(e);
         }
-        return hotelList;
+    }
+
+    @Override
+    public Booking read(Integer number, Integer hotelId, Transaction transaction) throws ServiceException {
+        Booking booking;
+        BookingDao bookingDao = transaction.createDao(DaoFactory.getInstance().getBookingDao());
+        try {
+            booking = bookingDao.read(number,hotelId);
+        } catch (DaoException e) {
+            logger.debug(e);
+            throw new ServiceException(e);
+        }
+        return booking;
     }
 }

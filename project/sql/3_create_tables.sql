@@ -52,16 +52,16 @@ CREATE TABLE `users_info` (
 CREATE TABLE `hotels` (
                           `id` INTEGER NOT NULL PRIMARY KEY,
                           `admin_id` INTEGER UNSIGNED NOT NULL,
-                          `name` VARCHAR(10) NOT NULL,
+                          `name` VARCHAR(50) NOT NULL,
                           `stars` TINYINT NOT NULL CHECK ( `stars` <= 5),
                           `type_of_food` TINYINT NOT NULL CHECK (`type_of_food` < 32),
                           #no, breakfast, half board,full board,all
                           `type_of_allocation` TINYINT NOT NULL CHECK (`type_of_allocation`< 32),
                           #single,double,triple,extra (4 people), child (1 people)
                           `type_of_comfort` TINYINT NOT NULL CHECK  (`type_of_comfort` > 0 AND `type_of_comfort` < 16),
-                          #standart,family,luxe,suite
+                          #standard,family,luxe,suite
                           `price_of_room` VARCHAR(25) NOT NULL,
-                          #standart price for rooms
+                          #standard price for rooms
                           `price_of_comfort` VARCHAR(15) NOT NULL,
                          #add price because of comfort
                           #max 99999$ for 1 room for 1 night
@@ -103,6 +103,8 @@ CREATE TABLE `booking` (
     `hotel_id` INTEGER NOT NULL,
     `date_arrival` DATE NOT NULL,
     `date_department` DATE NOT NULL,
+    `status` TINYINT NOT NULL CHECK (`status` <= 1),
+    #0 - waiting 1 - accept
     CONSTRAINT FK_booking_rooms FOREIGN KEY (`number`,`hotel_id`)
         REFERENCES `rooms` (`number`,`hotel_id`)
         ON UPDATE CASCADE
@@ -111,31 +113,32 @@ CREATE TABLE `booking` (
 #
 CREATE TABLE `orders` (
                               `id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                              `user_id` INTEGER UNSIGNED NOT NULL,
                               `hotel_id` INTEGER NOT NULL,
                               `number` INTEGER NOT NULL,
                               `date_arrival` DATE NOT NULL,
                               `date_department` DATE NOT NULL,
-                              `price` INT NOT NULL,
-                              #`count_of_rooms` VARCHAR(16) NOT NULL,
-                              `type_of_food` TINYINT NOT NULL CHECK (`type_of_food` <= 5),
-                              `type_of_allocation` TINYINT NOT NULL CHECK (`type_of_allocation` > 0 AND `type_of_allocation`< 32),
-                              `status` TINYINT NOT NULL CHECK (`status` <= 4),
-                               #wait, accept, cancellation, executed
+                              `status` TINYINT NOT NULL CHECK (`status` <= 3),
+                              #0 - сancel 1-waiting 2-accept 3-execute
                               CONSTRAINT FK_orders_rooms FOREIGN KEY (`hotel_id`,`number`)
                                   REFERENCES `rooms` (`hotel_id`,`number`)
+                                  ON UPDATE CASCADE
+                                  ON DELETE RESTRICT,
+                            CONSTRAINT FK_orders_users FOREIGN KEY (`user_id`)
+                                  REFERENCES `users` (`id`)
                                   ON UPDATE CASCADE
                                   ON DELETE RESTRICT
 ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 #
-CREATE TABLE `orders_users` (
-          `order_id` INTEGER NOT NULL,
-          `user_id` INTEGER UNSIGNED NOT NULL,
-      CONSTRAINT FK_orders_guests_orders FOREIGN KEY (`order_id`)
-              REFERENCES `orders` (`id`)
-              ON UPDATE CASCADE
-              ON DELETE RESTRICT,
-      CONSTRAINT FK_orders_users_users FOREIGN KEY (`user_id`)
-              REFERENCES `users` (`id`)
-              ON UPDATE CASCADE
-              ON DELETE RESTRICT
-  ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+# CREATE TABLE `orders_users` (
+#           `order_id` INTEGER NOT NULL,
+#           `user_id` INTEGER UNSIGNED NOT NULL,
+#       CONSTRAINT FK_orders_guests_orders FOREIGN KEY (`order_id`)
+#               REFERENCES `orders` (`id`)
+#               ON UPDATE CASCADE
+#               ON DELETE RESTRICT,
+#       CONSTRAINT FK_orders_users_users FOREIGN KEY (`user_id`)
+#               REFERENCES `users` (`id`)
+#               ON UPDATE CASCADE
+#               ON DELETE RESTRICT
+#   ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;

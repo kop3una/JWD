@@ -20,9 +20,9 @@ public class HotelIdFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
 
-        Optional<String> requestedPage = Optional.ofNullable(request.getParameter(RequestParameter.HOTEL_ID));
-        if (requestedPage.isPresent()) {
-            session.setAttribute(SessionAttribute.HOTEL_ID, requestedPage.get());
+        Optional<String> requestedHotelId = Optional.ofNullable(request.getParameter(RequestParameter.HOTEL_ID));
+        if (requestedHotelId.isPresent()) {
+            session.setAttribute(SessionAttribute.HOTEL_ID, requestedHotelId.get());
             String requestString = removeLocaleParameter(request);
             response.sendRedirect(requestString);
             return;

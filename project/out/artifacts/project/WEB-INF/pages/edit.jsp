@@ -16,6 +16,13 @@
     <a role="button" class="btn btn-primary btn-lg mt-5"
        href="${pageContext.request.contextPath}/controller?command=EDIT_INFO"><fmt:message
             key="edit.profile"/></a>
+
+    <c:if test="${sessionScope.role.value == initParam['ADMINISTRATOR'] && sessionScope.role != null}">
+        <a role="button" class="btn btn-primary btn-lg mt-5"
+           href="${pageContext.request.contextPath}/controller?command=SHOW_ADD_HOTEL"><fmt:message
+                key="edit.add-hotel"/></a>
+    </c:if>
+
     <a href="${pageContext.request.contextPath}/controller?command=MAIN" class="btn btn-primary btn-lg mt-5">
         <fmt:message key="return-main"/>
     </a>
